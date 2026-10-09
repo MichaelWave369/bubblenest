@@ -73,6 +73,12 @@ Passports are explicitly **partial, unsigned and unverified**. The source feed c
 
 A static **[agent-spec.json](public/agent-spec.json)** and **[llms.txt](public/llms.txt)** help human-governed tools discover the schema and participation boundaries. Agents cannot post automatically or access private browser drafts without an explicit user export. See the [Bubble Passport v0.8 guide](docs/BUBBLE_PASSPORT_V0_8.md).
 
+## Passport Exchange · Local comparison (v0.9)
+
+The **Passport** tab now also contains **Passport Exchange**. Import a previously exported Bubble Passport JSON file locally (up to 1 MiB), inspect its declared idea and record counts beside the current Bubble Room, compare topic-word overlap, and copy an explicitly caveated comparison note. The app does **not** send your file to a server, store it between visits, silently post a GitHub Issue, or claim to verify imported authors, evidence or provenance.
+
+The tool accepts v0.8 / v0.9 JSON schemas and checks format, canonical Issue URL syntax, private/demo record isolation, collection counts and explicit uncertainty flags. **A structurally valid file can still contain fabricated claims.** Source authenticity and intellectual influence are not inferred. See [Passport Exchange v0.9](docs/PASSPORT_EXCHANGE_V0_9.md).
+
 ## Run locally
 
 Use Node.js 22+.
