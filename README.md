@@ -65,6 +65,14 @@ Challenges are structured **GitHub Issue drafts**, explicitly submitted by the v
 
 A Bubble Room links directly to its selected Arena experience. Public history is bounded by the same GitHub Issues feed (up to 300 entries), so empty result sets are not definitive. See the [Claim to Flame Arena protocol](docs/CLAIM_TO_FLAME_ARENA_V0_7.md).
 
+## Bubble Passport · Portable idea dossiers (v0.8)
+
+Every Bubble Room now includes a **Passport** tab for generating an on-device JSON or Markdown snapshot of that idea's available public discussion and research history. The export contains room notes, evolution records, evidence receipts, reviews, challenges, their public GitHub sources, contributor handles and limitations.
+
+Passports are explicitly **partial, unsigned and unverified**. The source feed currently reads no more than 300 public GitHub Issues, including closed records, and can omit historical data. Private browser drafts and illustrative examples export with distinct provenance labels and **no public record attachments**. Nothing is automatically uploaded or published.
+
+A static **[agent-spec.json](public/agent-spec.json)** and **[llms.txt](public/llms.txt)** help human-governed tools discover the schema and participation boundaries. Agents cannot post automatically or access private browser drafts without an explicit user export. See the [Bubble Passport v0.8 guide](docs/BUBBLE_PASSPORT_V0_8.md).
+
 ## Run locally
 
 Use Node.js 22+.
