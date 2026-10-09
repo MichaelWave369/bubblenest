@@ -33,6 +33,14 @@ Every public Bubble Nest idea now has a dedicated **Bubble Room**, accessible fr
 
 GitHub Issues are fetched in up to three pages of 100 (including closed items). The site may not have a complete feed or full edit history, and submitted evidence remains **self-reported** until independently checked. See the [Bubble Rooms v0.3 specification](docs/BUBBLE_ROOMS_V0_3.md).
 
+## Bubble Evolution · Five-stage journey (v0.4)
+
+Each **Bubble Room** now offers an **Evolution** tab and five-stage visual journey: Spark → Hypothesis → Experiment → Evidence → Revision. The stages are **not linear grades or verified scientific milestones**. Ideas can move backward, revisit earlier hypotheses and change course when new information arrives.
+
+Published public bubbles can accept contributor-reported evolution notes through an explicit prefilled GitHub Issue. Each record includes a claim/change, required uncertainty, and methods or receipts for experimental or evidence stages. The latest public contribution is labeled **most recently reported**, never automatically certified. Evolution notes also join the room's timestamped activity feed and attributed participant list.
+
+The site preserves its static GitHub Pages architecture. All public records are limited by the currently fetched GitHub Issues window, and event timestamps do not prove invention or priority. See [Bubble Evolution protocol and safeguards](docs/BUBBLE_EVOLUTION_V0_4.md).
+
 ## Run locally
 
 Use Node.js 22+.
