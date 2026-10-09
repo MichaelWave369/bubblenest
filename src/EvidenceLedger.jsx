@@ -7,7 +7,7 @@ import "./evidence.css";
 const kindIcon={Source:BookOpen,Test:FlaskConical,Replication:RefreshCw,Review:FileCheck2};
 const empty={kind:"Source",stance:"Undetermined",summary:"",method:"",sourceUrl:"",relatedEvolution:"",limitations:"",next:""};
 const dateLabel=date=>{const d=new Date(date||"");return Number.isNaN(d.getTime())?"Date unavailable":d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});};
-function EvidenceCard({record}){
+function EvidenceCard({record,onReview}){
  const Icon=kindIcon[record.kind]||ClipboardList;
  return <article className="el-receipt">
   <div className="el-receipt-head"><span className="el-kind"><Icon size={16}/>{record.kind}</span><span className={"el-stance stance-"+record.stance.toLowerCase()}>{record.stance} · self-reported</span></div>
@@ -17,10 +17,10 @@ function EvidenceCard({record}){
   {record.relatedEvolution&&<p className="el-receipt-link"><GitBranch size={15}/><a href={record.relatedEvolution} target="_blank" rel="noopener noreferrer">Related issue (not cross-checked) <ExternalLink size={13}/></a></p>}
   <p><strong>Limitations / alternatives:</strong> {record.limitations}</p>
   {record.next&&<p><strong>Next question:</strong> {record.next}</p>}
-  <div className="el-receipt-footer"><span>@{record.author} · {dateLabel(record.date)} · issue #{record.issueNumber}</span><a href={record.url} target="_blank" rel="noopener noreferrer">Read GitHub receipt <ArrowUpRight size={15}/></a></div>
+  <div className="el-receipt-footer"><span>@{record.author} · {dateLabel(record.date)} · issue #{record.issueNumber}</span><div className="el-receipt-actions"><a href={record.url} target="_blank" rel="noopener noreferrer">Read GitHub receipt <ArrowUpRight size={15}/></a>{onReview&&<button type="button" onClick={()=>onReview(record.issueNumber)}><ClipboardList size={14}/> Bruv Review</button>}</div></div>
  </article>;
 }
-export default function EvidenceLedger({bubble,entries=[],feedStatus="ready"}){
+export default function EvidenceLedger({bubble,entries=[],feedStatus="ready",onReview}){
  const [filter,setFilter]=useState("All"),[search,setSearch]=useState(""),[writing,setWriting]=useState(false),[entry,setEntry]=useState(empty);
  useEffect(()=>{setFilter("All");setSearch("");setWriting(false);setEntry(empty)},[bubble?.id]);
  const publicRoom=publicBubble(bubble);
@@ -35,7 +35,7 @@ export default function EvidenceLedger({bubble,entries=[],feedStatus="ready"}){
   <div className="el-trust"><Info size={20}/><div><strong>A receipt is a record, not a verdict.</strong><p>Evidence strength, truth, independent replication, author priority and scientific credibility are NOT established by a submitted Issue. “Supports” or “Challenges” describes the contributor's interpretation, not the site's judgment.</p></div></div>
   <div className="el-controls"><label className="el-search"><Search size={18}/><input aria-label="Search evidence receipts" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Find a method, claim, reviewer…"/></label><div className="el-chips" aria-label="Filter evidence type">{["All",...EVIDENCE_KINDS].map(k=><button type="button" key={k} className={filter===k?"selected":""} aria-pressed={filter===k} onClick={()=>setFilter(k)}>{k}{k==="All"?" ("+records.length+")":" ("+stats.byKind[k]+")"}</button>)}</div></div>
   <div className="el-status"><span>{visible.length} record(s) shown</span>{feedStatus==="loading"&&<span>Loading public GitHub records…</span>}{feedStatus==="unavailable"&&<span className="el-warning">GitHub feed unavailable. Results may be incomplete.</span>}</div>
-  {visible.length?<div className="el-list">{visible.map(r=><EvidenceCard record={r} key={r.id}/>)}</div>:<div className="el-empty"><ClipboardList size={32}/><h3>{search||filter!=="All"?"No matching receipts":"No receipts recorded yet"}</h3><p>{publicRoom?"Open a public contribution and include its sources, uncertainties and reproducible methods.":"This is a preview. Public evidence only belongs to a published GitHub bubble."}</p></div>}
+  {visible.length?<div className="el-list">{visible.map(r=><EvidenceCard record={r} key={r.id} onReview={onReview}/>)}</div>:<div className="el-empty"><ClipboardList size={32}/><h3>{search||filter!=="All"?"No matching receipts":"No receipts recorded yet"}</h3><p>{publicRoom?"Open a public contribution and include its sources, uncertainties and reproducible methods.":"This is a preview. Public evidence only belongs to a published GitHub bubble."}</p></div>}
   {publicRoom?<div className="el-contribute"><div><span className="room-eyebrow">OPEN RESEARCH, NOT AUTOMATIC ENDORSEMENT</span><h3>Add a documented receipt.</h3><p>Every contribution is reviewed by its author on GitHub before publishing. No secret posting or paid backend.</p></div><button className="button primary" type="button" onClick={()=>setWriting(v=>!v)}>{writing?<X size={16}/>:<Plus size={16}/>} {writing?"Close form":"Add receipt"}</button></div>:<p className="el-preview"><ShieldCheck size={17}/> Publish this idea to GitHub before adding public evidence. Local drafts and examples never generate a public receipt.</p>}
   {writing&&publicRoom&&<form className="el-form" onSubmit={e=>e.preventDefault()}>
    <div className="el-two">
