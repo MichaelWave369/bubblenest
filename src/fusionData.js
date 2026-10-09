@@ -8,7 +8,7 @@ export const FUSION_PHASE="PROPOSAL_AWAITING_CONTRIBUTOR_RESPONSES";
 export const FUSION_MODES=["Joint experiment","Compare methods","Complementary prototypes","Creative collaboration","Open discussion"];
 const issueUrl=n=>ROOM_REPO+"/issues/"+n;
 const contentSection=(body,title)=>{
- const label="## "+title+"\n",i=body.indexOf(label);
+ const label="\n## "+title+"\n",i=body.indexOf(label);
  return i<0?"":body.slice(i+label.length).split(/\n## |\n---(?:\n|$)/)[0].trim().slice(0,2600);
 };
 const scrub=(s,max=1100)=>cleanEvidenceText(s,max).replace(/^---$/gm,"\\---");
