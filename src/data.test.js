@@ -1,0 +1,7 @@
+import test from "node:test";import assert from "node:assert/strict";import {score,level,checks,parseIssue,makeIssue,examples} from "./data.js";
+test("scores no evidence as Weak Sauce",()=>{assert.equal(score({}),0);assert.equal(level(0).name,"Weak Sauce");});
+test("scores a complete self-check as Ledger Reaper",()=>{const x=Object.fromEntries(checks.map(c=>[c.id,true]));assert.equal(score(x),100);assert.equal(level(100).name,"Ledger Reaper");});
+test("rubric covers every score",()=>{for(let x=0;x<=100;x++)assert.ok(level(x));});
+test("ignores ordinary issues and pull requests",()=>{assert.equal(parseIssue({number:1,title:"Bug report",body:"hello"}),null);assert.equal(parseIssue({number:2,title:"[Bubble] Hello",body:"",pull_request:{url:"x"}}),null);});
+test("public issue round-trip extracts core details",()=>{const b={title:"Test",category:"Science",summary:"My spark",ask:"Looking for testers",evidence:"Unverified",why:"Exploration"};const body=makeIssue(b);const result=parseIssue({number:42,title:"[Bubble] Test",body,user:{login:"researcher"},html_url:"https://github.com/MichaelWave369/bubblenest/issues/42",comments:2});assert.equal(result.title,"Test");assert.equal(result.category,"Science");assert.equal(result.summary,"My spark");assert.equal(result.ask,"Looking for testers");assert.equal(result.evidence,"Unverified");assert.equal(result.author,"researcher");});
+test("all examples declare themselves",()=>assert.ok(examples.every(b=>b.sample===true&&b.evidence)));
