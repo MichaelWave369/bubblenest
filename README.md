@@ -49,6 +49,14 @@ To contribute, fill out a structured form and choose **Review draft on GitHub**.
 
 Data comes from the same bounded GitHub Issues API feed (at most 300 entries); missing results do not imply no evidence exists. See [Evidence Ledger v0.5 protocol](docs/EVIDENCE_LEDGER_V0_5.md) for requirements and limitations.
 
+## Bruv Review Desk · Challenges and reproduction checks (v0.6)
+
+Every public Bubble Room includes a **Bruv Review** tab. Contributors can select a specific public evidence receipt, inspect it, describe a source inspection, method audit, reproduction attempt or critique, disclose their relationship and conflicts, and record uncertainty.
+
+Each submitted review is its own manually posted **GitHub Issue**, linked to a receipt belonging to the same Bubble Room. Submitted findings (*Corroborates, Challenges, Inconclusive, More work needed*) remain **contributor-reported** and can disagree with each other. The site flags same-account self-reviews and never labels an entry independently verified.
+
+Only reviews whose evidence target is visible in the bounded GitHub feed are displayed. A missing review does not establish that no review exists. See [Bruv Review Desk v0.6 technical and attribution guide](docs/BRUV_REVIEW_DESK_V0_6.md).
+
 ## Run locally
 
 Use Node.js 22+.
