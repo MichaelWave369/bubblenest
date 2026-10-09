@@ -51,7 +51,7 @@ export function roomParticipants(bubble,entries){
 }
 export function makeRoomEntry({bubble,kind,status,summary,method,evidence,next}){
  const parent=parentIssueNumber(bubble?.url);
- if(!parent||!ROOM_KINDS.includes(kind)||!ROOM_STATES.includes(status)||!String(summary||"").trim())return null;
+ if(!parent||bubble?.local||bubble?.sample||!ROOM_KINDS.includes(kind)||!ROOM_STATES.includes(status)||!String(summary||"").trim())return null;
  const clean=x=>String(x||"").trim().slice(0,2200).replace(/^## /gm,"\\## ");
  const title="[Room] "+kind+": "+clean(summary).slice(0,90).replace(/[\r\n]+/g," ");
  const body=[
