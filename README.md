@@ -25,6 +25,14 @@ The **Bubbleverse** is an interactive map of example ideas, private local drafts
 
 **Important:** Its lines are keyword/category-based suggestions, never verified scientific relationships or evidence of who inspired whom. The map caps results at 30 visible bubbles and discloses omitted results. See [Bubbleverse technical/ethics specification](docs/BUBBLEVERSE_V0_2.md).
 
+## Bubble Rooms · Individual research spaces (v0.3)
+
+Every public Bubble Nest idea now has a dedicated **Bubble Room**, accessible from idea cards and the Bubbleverse map. Inside, visitors can view the original idea dossier, proposed experiments, shared references, publicly attributed participation and a timestamped activity list.
+
+**Publish without hidden infrastructure:** A contributor fills out a form and explicitly opens a prefilled public GitHub Issue linked to the original bubble. Only actual GitHub issues are public records. Example and locally saved draft rooms never impersonate real community participation.
+
+GitHub Issues are fetched in up to three pages of 100 (including closed items). The site may not have a complete feed or full edit history, and submitted evidence remains **self-reported** until independently checked. See the [Bubble Rooms v0.3 specification](docs/BUBBLE_ROOMS_V0_3.md).
+
 ## Run locally
 
 Use Node.js 22+.
