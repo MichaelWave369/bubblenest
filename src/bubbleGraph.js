@@ -7,9 +7,9 @@ const centers={
  Science:[202,196],Technology:[503,144],Philosophy:[809,198],
  Art:[198,472],Community:[505,496],Wildcards:[806,471]
 };
-const stops=new Set("with this that what your their them from into about when where have been will could would should want some another together people there they which while through these those then than under after before being every idea ideas the and but for you are our can not how its his her she who why does same open more much like real work works this one two just make help lets get made experimental propose test tests experiment experiments asking something might between using use other".split(" "));
+const stops=new Set("with this that what your their them from into about when where have been will could would should want some another together people there they which while through these those then than under after before being every idea ideas the and but for you are our can not how its his her she who why does same open more much like real work works this one two just make help lets get made experimental propose test tests experiment experiments asking something might between using use other research concept generic proposal proposals".split(" "));
 export function terms(bubble){
- const sentence=[bubble.title||"",bubble.summary||"",bubble.ask||""].join(" ").toLowerCase().replace(/[^a-z0-9 ]/g," ");
+ const sentence=[bubble.title||"",bubble.summary||""].join(" ").toLowerCase().replace(/[^a-z0-9 ]/g," ");
  return [...new Set(sentence.split(/\s+/).filter(t=>t.length>=4&&!stops.has(t)))].sort();
 }
 export function proposeOverlap(a,b){
