@@ -79,6 +79,14 @@ The **Passport** tab now also contains **Passport Exchange**. Import a previousl
 
 The tool accepts v0.8 / v0.9 JSON schemas and checks format, canonical Issue URL syntax, private/demo record isolation, collection counts and explicit uncertainty flags. **A structurally valid file can still contain fabricated claims.** Source authenticity and intellectual influence are not inferred. See [Passport Exchange v0.9](docs/PASSPORT_EXCHANGE_V0_9.md).
 
+## Bubble Fusion · Collaboration invitations (v1.0)
+
+**Bubble Fusion** is a first-class studio for proposing work between **two distinct public Bubble Nest ideas** without erasing their separate origin, credit, or research histories. Its invitation form requires a shared objective, proposed experiment or deliverable, independent attribution plan, specific ownership/permission boundaries, and uncertainty.
+
+**Invitations are NOT acceptance.** The original contributors must independently agree before actual collaboration. No automatic merges, license grants, approvals, hidden writes, or scientific truth scores occur. Proposed Fusion items are ordinary, manually submitted GitHub Issues with both source links; the page displays visible public invitation history, not verified consent.
+
+Launch Fusion from the navbar, Bubble Rooms or two public ideas compared in Bubbleverse. Passport Exchange can navigate to the studio, but imported JSON remains untrusted and must not automatically authorize a proposed partnership. See [Bubble Fusion v1.0](docs/BUBBLE_FUSION_V1_0.md).
+
 ## Run locally
 
 Use Node.js 22+.
