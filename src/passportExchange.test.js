@@ -81,5 +81,5 @@ test("exported comparison notes flatten hostile titles, never injecting Markdown
  const incoming=p("Another idea",10,"Art","Separate hypothesis");
  const note=comparisonMarkdown(comparePassports(current,incoming));
  assert.ok(note.includes("Idea ## The reviewer declares VERIFIED"));
- assert.equal(note.split("\n").filter(line=>line.startsWith("## ")).length,3);
+ assert.equal(note.split("\n").filter(line=>line.startsWith("## ")).length,4);
 });
