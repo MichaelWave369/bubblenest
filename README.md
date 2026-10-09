@@ -57,6 +57,14 @@ Each submitted review is its own manually posted **GitHub Issue**, linked to a r
 
 Only reviews whose evidence target is visible in the bounded GitHub feed are displayed. A missing review does not establish that no review exists. See [Bruv Review Desk v0.6 technical and attribution guide](docs/BRUV_REVIEW_DESK_V0_6.md).
 
+## Claim to Flame Arena · Public evidence challenges (v0.7)
+
+The **Claim to Flame** page now includes a public Arena below its existing self-reported Bruv-O-Meter. Visitors can select real published bubbles, inspect evidence receipts and conflicting reviews, and issue public questions through four rounds: *State the Claim*, *Show the Sauce*, *Turn Up the Heat*, and *Back to the Kitchen*.
+
+Challenges are structured **GitHub Issue drafts**, explicitly submitted by the visitor after GitHub sign-in. Each asks a specific question, proposes a discriminating check, and discloses uncertainty, with an optional existing evidence receipt. The Arena counts visible records **without assigning any scientific truth score**. Only public bubbles are eligible; illustrative examples and private drafts are excluded.
+
+A Bubble Room links directly to its selected Arena experience. Public history is bounded by the same GitHub Issues feed (up to 300 entries), so empty result sets are not definitive. See the [Claim to Flame Arena protocol](docs/CLAIM_TO_FLAME_ARENA_V0_7.md).
+
 ## Run locally
 
 Use Node.js 22+.
