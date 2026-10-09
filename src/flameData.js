@@ -15,7 +15,7 @@ const section=(body,head)=>{
  const marker="## "+head+"\n",i=body.indexOf(marker);
  return i<0?"":body.slice(i+marker.length).split(/\n## |\n---(?:\n|$)/)[0].trim().slice(0,2400);
 };
-const safe=s=>cleanEvidenceText(s,1100);
+const safe=s=>cleanEvidenceText(s,1100).replace(/^---$/gm,"\\---");
 export function makeFlameChallenge(v){
  const parent=parentIssueNumber(v?.bubble?.url);
  if(!parent||v.bubble?.sample||v.bubble?.local||!ROUND_NAMES.includes(v.round))return null;
