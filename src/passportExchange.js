@@ -9,7 +9,6 @@ const isObject=v=>v!==null&&typeof v==="object"&&!Array.isArray(v);
 const nonempty=s=>typeof s==="string"&&s.trim().length>0;
 const wellBounded=(s,n=5000)=>typeof s==="string"&&s.length<=n;
 const publicIssue=url=>typeof url==="string"&&/^https:\/\/github\.com\/MichaelWave369\/bubblenest\/issues\/[1-9]\d*$/.test(url);
-const genericUrl=url=>{try{const u=new URL(url);return ["https:","http:"].includes(u.protocol)&&!u.username&&!u.password}catch{return false}};
 export function validatePassport(value){
  const errors=[];
  if(!isObject(value))return {ok:false,errors:["Not a JSON object."]};
@@ -46,7 +45,7 @@ export function validatePassport(value){
   }
  }
  if(value.source?.snapshot_signed!==false||value.source?.independent_verification!==false||value.source?.coverage!=="PARTIAL_OR_UNKNOWN")errors.push("Missing required uncertainty and unsigned-snapshot flags.");
- if(isObject(value.source)&&value.source.limitations?.some(x=>!wellBounded(x,1500)))errors.push("Malformed source limitations.");
+ if(isObject(value.source)&&Array.isArray(value.source.limitations)&&value.source.limitations.some(x=>!wellBounded(x,1500)))errors.push("Malformed source limitations.");
  // This is a schema-consistency check only; the entire file is still an untrusted declaration.
  return {ok:errors.length===0,errors};
 }
@@ -81,13 +80,14 @@ export function comparePassports(current,imported){
 }
 export function comparisonMarkdown(c){
  if(!c)return "";
+ const inline=v=>String(v??"").replace(/[\r\n\t]+/g," ").replace(/\\/g,"\\\\").replace(/([*_`\[\]<>])/g,"\\$1").slice(0,600);
  const lines=[
   "# Bubble Passport Exchange · Comparison","",
-  "**Current:** "+c.currentTitle,"**Imported:** "+c.importedTitle,
+  "**Current:** "+inline(c.currentTitle),"**Imported:** "+inline(c.importedTitle),
   "**Heuristic:** "+c.relation,"",
   "## Topics and terms","",
-  "**Current category:** "+String(c.categories[0]||"Unspecified"),
-  "**Imported category:** "+String(c.categories[1]||"Unspecified"),
+  "**Current category:** "+inline(c.categories[0]||"Unspecified"),
+  "**Imported category:** "+inline(c.categories[1]||"Unspecified"),
   "**Shared:** "+(c.sharedTerms.join(", ")||"None detected"),
   "**Current-only:** "+(c.onlyCurrent.join(", ")||"None detected"),
   "**Imported-only:** "+(c.onlyImported.join(", ")||"None detected"),
