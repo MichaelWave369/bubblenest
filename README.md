@@ -18,6 +18,13 @@ After GitHub Pages is configured with **Source: GitHub Actions**, deployment on 
 - Claim to Flame: six sauce stages, evidence self-check, and exportable text report.
 - MIT license, automated tests and a GitHub Pages build/deploy workflow.
 
+
+## Bubbleverse · Living Idea Atlas (v0.2)
+
+The **Bubbleverse** is an interactive map of example ideas, private local drafts and published GitHub issue bubbles. Select a bubble to inspect its evidence status, use search and topic filters, see unverified thematic suggestions, or compare two proposals side-by-side. Copyable selection links support focused discussion. Only public issue-to-issue pairs may generate a *draft* connection-review issue, which must be explicitly submitted through GitHub.
+
+**Important:** Its lines are keyword/category-based suggestions, never verified scientific relationships or evidence of who inspired whom. The map caps results at 30 visible bubbles and discloses omitted results. See [Bubbleverse technical/ethics specification](docs/BUBBLEVERSE_V0_2.md).
+
 ## Run locally
 
 Use Node.js 22+.
