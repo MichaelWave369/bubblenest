@@ -41,6 +41,14 @@ Published public bubbles can accept contributor-reported evolution notes through
 
 The site preserves its static GitHub Pages architecture. All public records are limited by the currently fetched GitHub Issues window, and event timestamps do not prove invention or priority. See [Bubble Evolution protocol and safeguards](docs/BUBBLE_EVOLUTION_V0_4.md).
 
+## Evidence Ledger · Research receipts (v0.5)
+
+Every Bubble Room includes an **Evidence** tab to collect public source references, reproducible test reports, replication attempts and critiques. You can browse and filter records, inspect supplied methods and limitations, follow source links, and see who submitted each GitHub receipt. The activity history and contributor list include evidence issues alongside room and evolution notes.
+
+To contribute, fill out a structured form and choose **Review draft on GitHub**. You must then inspect and submit the public Issue yourself. A Source entry requires a public URL; Test and Replication entries require methods; every entry requires explicit uncertainty. **Supports, Challenges, Mixed and Undetermined are self-reported perspectives, not verified truth labels.** No automated certification is implied.
+
+Data comes from the same bounded GitHub Issues API feed (at most 300 entries); missing results do not imply no evidence exists. See [Evidence Ledger v0.5 protocol](docs/EVIDENCE_LEDGER_V0_5.md) for requirements and limitations.
+
 ## Run locally
 
 Use Node.js 22+.
