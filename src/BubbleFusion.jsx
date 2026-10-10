@@ -4,11 +4,12 @@ import{FUSION_MODES,makeFusionDraft,validFusionPair,visibleFusionIssues,fusionPa
 import{publicBubble}from"./bubbleGraph.js";
 import{parentIssueNumber}from"./roomData.js";
 import"./fusion.css";
+import FusionResponsePanel from "./FusionResponsePanel.jsx";
 const blank={mode:"Joint experiment",question:"",plan:"",credits:"",boundaries:"",limits:"",understandsConsent:false};
 function ids(){try{const q=new URLSearchParams(location.hash.split("?")[1]||"");return{a:q.get("a")||"",b:q.get("b")||""}}catch{return{a:"",b:""}}}
 function stamp(s){const d=new Date(s||"");return Number.isNaN(d.getTime())?"Date unavailable":d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})}
 function ConsentNote(){return <div className="fusion-consent"><ShieldAlert size={20}/><p><strong>Invitation is not agreement.</strong> Original authors retain their independent attribution. A proposed Fusion Issue does not authorize copying, sharing private work, combining licenses, or implying that anyone has consented. Participants must explicitly agree in a separate, inspectable discussion.</p></div>}
-function FusionRecord({r,bubbles,onOpenRoom}){
+function FusionRecord({r,bubbles,onOpenRoom,responses}){
  const a=bubbles.find(b=>parentIssueNumber(b.url)===r.aNumber);
  const b=bubbles.find(b=>parentIssueNumber(b.url)===r.bNumber);
  return <article className="fusion-record">
@@ -21,9 +22,10 @@ function FusionRecord({r,bubbles,onOpenRoom}){
   <p><strong>Proposed work:</strong> {r.plan}</p><p><strong>Credit plan:</strong> {r.credits}</p>
   <p><strong>Scope and consent boundaries:</strong> {r.boundaries}</p><p><strong>Limitations:</strong> {r.limits}</p>
   <div className="fusion-record-foot"><span>CONSENT NOT VERIFIED · AWAITING CONTRIBUTOR RESPONSES</span><a href={r.url} target="_blank" rel="noopener noreferrer">Discuss this invitation <ExternalLink size={14}/></a></div>
+  <FusionResponsePanel proposal={r} bubbles={bubbles} responses={responses}/>
  </article>;
 }
-export default function BubbleFusion({bubbles=[],proposals=[],feedStatus="loading",onOpenRoom}){
+export default function BubbleFusion({bubbles=[],proposals=[],responses=[],feedStatus="loading",onOpenRoom}){
  const [chosen,setChosen]=useState(ids),[query,setQuery]=useState(""),[form,setForm]=useState(blank),[mode,setMode]=useState("All");
  useEffect(()=>{const change=()=>setChosen(ids());window.addEventListener("hashchange",change);return()=>window.removeEventListener("hashchange",change)},[]);
  const publicBubbles=useMemo(()=>bubbles.filter(publicBubble),[bubbles]);
@@ -62,8 +64,8 @@ export default function BubbleFusion({bubbles=[],proposals=[],feedStatus="loadin
     <p className="fusion-submit-note">GitHub sign-in and an explicit submit action are required. Bubble Nest never grants contributor consent, posts automatically, or alters either original idea.</p>
    </form>:<div className="fusion-form-empty"><GitMerge size={40}/><h3>Every fusion needs two real bubbles.</h3><p>Choose two distinct published ideas on the left. Only then can an invitation be drafted.</p></div>}
   </div></div>
-  <section className="fusion-history"><div className="fusion-history-title"><div><span className="eyebrow">03 · PUBLIC INVITATION LEDGER</span><h2>{ready?"Discussion history for this pair":"Community Fusion proposals"}</h2><p>All visible entries are invitations, never proof that both original authors agreed.</p></div><label>Type <select value={mode} onChange={e=>setMode(e.target.value)}><option>All</option>{FUSION_MODES.map(k=><option key={k}>{k}</option>)}</select></label></div>
-   {shown.length?<div className="fusion-history-grid">{shown.map(item=><FusionRecord key={item.id} r={item} bubbles={publicBubbles} onOpenRoom={onOpenRoom}/>)}</div>:<div className="fusion-empty"><GitMerge size={29}/><p>No matching invitations are visible in this GitHub feed. That doesn't mean nothing has been discussed elsewhere.</p></div>}
+  <section className="fusion-history"><div className="fusion-history-title"><div><span className="eyebrow">03 · PUBLIC INVITATION LEDGER</span><h2>{ready?"Discussion history for this pair":"Community Fusion proposals"}</h2><p>Every invitation can collect attributable account responses, but these do not constitute verified legal consent.</p></div><label>Type <select value={mode} onChange={e=>setMode(e.target.value)}><option>All</option>{FUSION_MODES.map(k=><option key={k}>{k}</option>)}</select></label></div>
+   {shown.length?<div className="fusion-history-grid">{shown.map(item=><FusionRecord key={item.id} r={item} bubbles={publicBubbles} responses={responses} onOpenRoom={onOpenRoom}/>)}</div>:<div className="fusion-empty"><GitMerge size={29}/><p>No matching invitations are visible in this GitHub feed. That doesn't mean nothing has been discussed elsewhere.</p></div>}
   </section>
   <div className="fusion-foot"><Info size={18}/><p>Issue existence, metadata, relationship claims and consent declarations are not independently verified. Fusion is a governed proposal flow, not a license transfer or intellectual property registry. Public feed pagination and API outages can hide older records.</p></div>
  </section>;
