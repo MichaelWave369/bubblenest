@@ -45,8 +45,8 @@ export default function PassportExchange({currentPassport}){
    </div>
    <h4 className="exchange-table-heading">Records represented in each snapshot</h4>
    <div className="exchange-counts">{Object.keys(comparison.currentCounts).map(key=><div key={key}><span>{key.replace(/_/g," ")}</span><strong>{comparison.currentCounts[key]}</strong><strong>{comparison.importedCounts[key]}</strong></div>)}</div>
-   <div className="exchange-count-note">Numbers compare record presence only. They are not scientific scores. Both snapshots may be incomplete.</div>
-   <div className="exchange-actions"><button className="button primary" type="button" onClick={copy}><ClipboardCopy size={17}/> Copy comparison note</button><button className="button plain" type="button" onClick={clear}><Trash2 size={16}/> Clear imported file</button></div>
+   <div className="exchange-count-note">Numbers compare record presence only. They are not scientific scores. Both snapshots may be incomplete. The Fusion Lab requires choosing two independently fetched public bubbles; importing a Passport does not authenticate or select either one.</div>
+   <div className="exchange-actions"><a className="button primary" href="#/fusion"><GitCompareArrows size={17}/> Explore public Bubble Fusion</a><button className="button plain" type="button" onClick={copy}><ClipboardCopy size={17}/> Copy comparison note</button><button className="button plain" type="button" onClick={clear}><Trash2 size={16}/> Clear imported file</button></div>
   </div>}
   {status&&<p className="exchange-status" role="status"><Info size={16}/>{status}</p>}
   <div className="exchange-foot"><ShieldCheck size={18}/><p>Importing does not create an account, modify either Passport, upload anything or open GitHub Issues. To collaborate publicly, review the original source materials and use the normal human-approved Bubble Nest contribution workflow.</p></div>

@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -96,5 +96,19 @@
       "Import authorizes an agent to post"
     ],
     "lifecycle": "Imported object is kept only in current page component state and discarded when cleared or the page unmounts"
+  },
+  "bubble_fusion": {
+    "entrypoint": "#/fusion",
+    "protocol": "<!-- bubblenest:fusion:v1 -->",
+    "required_sources": "two distinct real public Bubble Nest Issues",
+    "status": "PROPOSAL_AWAITING_CONTRIBUTOR_RESPONSES",
+    "participation": "prepare prefilled Issue only; explicit human submission and separate contributor consent needed",
+    "safeguards": [
+      "Preserve independent source Issue links and credit",
+      "Do not treat a proposal as agreement or permission",
+      "Reject private drafts and examples",
+      "Treat imported Passport data as untrusted and not source-authenticated",
+      "Do not infer legal ownership or scientific correctness"
+    ]
   }
 }
