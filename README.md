@@ -95,6 +95,14 @@ The public reader checks whether the **GitHub account authoring each response Is
 
 **Interest is not legal consent.** Neither two interest signals nor original Issue authorship prove identity, rights ownership, license permission or authorization to execute a joint experiment. This is still a human-reviewed, public GitHub Issue workflow, not automatic publishing. See [Fusion Response Receipts v1.1](docs/FUSION_RESPONSE_RECEIPTS_V1_1.md).
 
+## Fusion Charters · Public pilot planning (v1.2)
+
+Every Bubble Fusion invitation now includes a **Fusion Charter Desk** for drafting a bounded experiment or creative project proposal, with deliverables, evaluation methods, independent credit, license and privacy boundaries, stop conditions, and review checkpoints. The existing v1.1 contributor signals appear alongside the plan so disagreements and withdrawn interest cannot be silently ignored.
+
+Each Charter is **DRAFT FOR PUBLIC REVIEW, NOT AUTHORIZED**. Neither a submitted Issue nor two positive account-interest signals grant execution rights, licensing, identity verification or legal consent. Charter drafts open as **prefilled GitHub Issues for explicit human review**, with no automatic posting or activation. Historical submissions remain labeled nonbinding.
+
+See [Fusion Charters v1.2 protocol](docs/FUSION_CHARTERS_V1_2.md).
+
 ## Run locally
 
 Use Node.js 22+.
