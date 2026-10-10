@@ -117,6 +117,12 @@ An optional SHA-256 digest can be calculated **locally in the browser from a sel
 
 See the [Fusion Artifact Receipts v1.4 protocol](docs/FUSION_ARTIFACT_RECEIPTS_V1_4.md).
 
+## Byte Check Receipts · Local SHA-256 comparison (v1.5)
+
+Each public **Fusion Artifact** now has a **Byte Check Desk**. Select a local file up to 25 MiB and compare its browser-computed SHA-256 with the contributor-declared artifact digest. The UI distinguishes hash match, hash mismatch, missing source digest, and conflicting source byte size. **No file bytes are uploaded**, and no remote source is fetched.
+
+A completed local check can be documented through a **human-reviewed GitHub Issue draft** with a source chain, acquisition method, environment, uncertainty and automatically derived comparison outcome. The site re-derives outcomes when reading public Issues, rejecting forged results and mismatched source links. **Matching bytes do not certify scientific findings, file authorship, licensing or independent research replication.** See [Byte Check Receipts v1.5](docs/BYTE_CHECK_RECEIPTS_V1_5.md).
+
 ## Run locally
 
 Use Node.js 22+.
