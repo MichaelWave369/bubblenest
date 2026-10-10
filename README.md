@@ -171,6 +171,14 @@ The comparison works **without accessing the live GitHub Issues feed** once the 
 
 See [Offline Capsule Lab v2.1 protocol](docs/OFFLINE_CAPSULE_LAB_V2_1.md).
 
+## Installable offline app shell (v2.2)
+
+**Bubble Nest is now an installable Progressive Web App.** After an initial successful online load, its versioned service worker precaches the React/Vite app shell, styles, icons and static files, so supported browsers can subsequently open the site while offline. The footer distinguishes browser-reported network state from **offline app shell ready**, offers installation where supported and requires user action to apply an available update.
+
+The standalone **[Offline Capsule Lab](https://michaelwave369.github.io/bubblenest/#/capsules)** can then compare two locally selected v2.0 Evidence Capsules without the live GitHub Issues API. **GitHub data itself is not cached, synced or available offline**; you must have saved any capsules first. Service-worker files are limited to the `/bubblenest/` origin/scope, do not touch other repositories, and never cache third-party API responses, local research files or user drafts. A cached shell is not proof that the GitHub feed works.
+
+The default production build generates stable 192/512 PNG icons and a revisioned `dist/sw.js` precache manifest with Node built-ins; no new package dependencies. See [Offline PWA v2.2 documentation](docs/OFFLINE_PWA_V2_2.md) for first-use, offline limitations and user-controlled updates.
+
 ## Run locally
 
 Use Node.js 22+.
