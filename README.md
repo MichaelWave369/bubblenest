@@ -123,6 +123,14 @@ Each public **Fusion Artifact** now has a **Byte Check Desk**. Select a local fi
 
 A completed local check can be documented through a **human-reviewed GitHub Issue draft** with a source chain, acquisition method, environment, uncertainty and automatically derived comparison outcome. The site re-derives outcomes when reading public Issues, rejecting forged results and mismatched source links. **Matching bytes do not certify scientific findings, file authorship, licensing or independent research replication.** See [Byte Check Receipts v1.5](docs/BYTE_CHECK_RECEIPTS_V1_5.md).
 
+## Reproduction Receipts · Report attempts against published Trials (v1.6)
+
+Each public **Fusion Attempt Report** now has a **Reproduction Attempts** desk where contributors can document another run, a differing result, an inconclusive attempt, a blocked run or a stopped attempt. Reports preserve the original trial endpoint, procedure, controls, environment, deviations, observations and limitations, and link back through its Charter, Fusion and source Bubbles.
+
+**Reported matching/different results require a pinned, same-Trial Artifact Receipt with a declared SHA-256 and version.** The site preserves contradictory outcomes, flags same-account repetitions, and treats different-account reports as **unverified independence**. A pinned hash is not a Byte Check, and a replication report is not scientific certification or permission to run an experiment. All submissions use prefilled GitHub Issues that the contributor explicitly reviews and posts.
+
+See [Reproduction Receipts v1.6](docs/REPRODUCTION_RECEIPTS_V1_6.md).
+
 ## Run locally
 
 Use Node.js 22+.
