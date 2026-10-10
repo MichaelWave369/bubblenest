@@ -47,7 +47,7 @@ export default function FusionCharterPanel({proposal,bubbles=[],responses=[],cha
       ["checkpoint","Review checkpoint *","What review must occur before progressing or spending resources?",750],
       ["limitations","Uncertainty and risks *","Which assumptions or dependencies remain untested?",900]
      ].map(([key,label,placeholder,max])=><label className="field-label" key={key}>{label}<textarea rows={2} maxLength={max} value={form[key]} onChange={e=>update(key,e.target.value)} placeholder={placeholder}/></label>)}
-     <label className="fc-check"><input type="checkbox" checked={form.acknowledged} onChange={e=>update("acknowledged",e.target.checked)}/><span>I understand this is an unsigned, nonbinding **proposal**. Each participant's specific permissions and authorization must be obtained separately before execution.</span></label>
+     <label className="fc-check"><input type="checkbox" checked={form.acknowledged} onChange={e=>update("acknowledged",e.target.checked)}/><span>I understand this is an unsigned, nonbinding proposal. Each participant's specific permissions and authorization must be obtained separately before execution.</span></label>
      <div className="fc-form-foot"><span><Info size={15}/> No GitHub submission occurs until you explicitly review and post.</span>
        {prepared?<a href={prepared.url} className="button primary" target="_blank" rel="noopener noreferrer"><FileText size={16}/> Review charter on GitHub <ArrowUpRight size={15}/></a>:<button disabled type="button" className="button primary">Complete the charter</button>}
      </div>
