@@ -54,6 +54,11 @@ test("only-in-A and only-in-B reporting is symmetrical with no claims of deletio
  const summary=offlineComparisonMarkdown(ab);
  assert.match(summary,/A and B are reviewer-selected slots/);
  assert.match(summary,/not proven deleted/);
+ assert.ok(summary.includes("Capsule A dossier:"));
+ assert.ok(summary.includes("Capsule B dossier:"));
+ assert.ok(!summary.includes("Currently visible snapshot:"));
+ assert.ok(!summary.includes("Imported export:"));
+ assert.ok(summary.includes("Only in A:"));
  assert.equal(offlineComparisonMarkdown(null),"");
 });
 test("changed observations and contradictory reproduction labels remain visible",async()=>{
