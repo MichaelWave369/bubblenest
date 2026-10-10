@@ -12,3 +12,25 @@
 .ocl-export{padding:19px;background:#1a5148;border:1px solid #72a38c;border-radius:12px;margin-top:19px}.ocl-export h3{font-size:17px;margin:0 0 8px}.ocl-export p{font-size:11px;line-height:1.7;color:#d3e9e2}.ocl-export>div{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.ocl-export button{display:flex;align-items:center;gap:8px;border:0;border-radius:9px;background:#b7ffe0;color:#164234;padding:11px 13px;font-size:11px;font-weight:800}.ocl-export button:last-child{border:1px solid #9abbaa;background:#1f4746;color:#eafff4}.ocl-notice{font-size:11px;color:#c7ffe0;border:1px solid #74a589;background:#19503f;border-radius:9px;padding:13px;margin-top:13px}.ocl-footer{margin-top:25px;font-size:11px;line-height:1.75;color:#abc8cf}
 @media(max-width:720px){.ocl-pair{grid-template-columns:1fr}.ocl-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ocl-page{padding:22px 16px 60px}.ocl-hero{padding:24px}.ocl-controls button{width:100%}}
 @media(max-width:460px){.ocl-results{padding:14px}.ocl-export>div{flex-direction:column}.ocl-export button{justify-content:center;width:100%}}
+
+
+/* v2.3 synthetic demo: visually distinct from live research and impossible to miss. */
+.ocl-demo-station{margin:18px 0;border:1px solid #a5a264;border-radius:14px;padding:18px;background:linear-gradient(145deg,#313b34,#152f39);color:#f6ffe8}
+.ocl-demo-station>div:first-child strong{font-size:13px;color:#ffe6a0;font-weight:900;letter-spacing:.04em}
+.ocl-demo-station>div:first-child p{font-size:11px;line-height:1.7;color:#d4e5da;max-width:770px}
+.ocl-demo-station>button{display:inline-flex;padding:12px 17px;border-radius:9px;border:0;background:#ffe6a0;color:#3a3322;font-size:12px;font-weight:900;cursor:pointer;margin:6px 0}
+.ocl-demo-station>button:disabled{opacity:.5;cursor:wait}
+.ocl-demo-results{padding:13px;margin-top:13px;border:1px solid #938e65;border-radius:10px;background:#20383a}
+.ocl-demo-results p{display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:11px;line-height:1.5;margin:8px 0}
+.ocl-demo-results p span{display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:bold;border:1px solid #7dab8e;color:#c9f5d2;border-radius:50%;width:22px;height:22px}
+.ocl-demo-results p b{margin-left:auto;color:#e8ffcd}
+.ocl-demo-downloads{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}
+.ocl-demo-downloads button{border:1px solid #a7b78c;border-radius:9px;background:#2c5149;color:#edffdd;font-size:11px;font-weight:800;padding:10px 13px}
+.ocl-demo-results small{display:block;font-size:10px;line-height:1.7;color:#c3d4c5}
+.ocl-demo-boundary{font-size:11px;line-height:1.7;margin:12px 0 0;border-top:1px solid #bbba883c;padding-top:12px;color:#f0e7c2}
+.ocl-demo-tag{color:#ffe2a0;font-size:10px;font-weight:900;letter-spacing:.02em}
+.ocl-demo-warning{background:#3b382f;border:1px solid #ccb67b;padding:14px;border-radius:9px;margin-bottom:17px}
+.ocl-demo-warning strong{color:#ffe9a4;font-size:13px}
+.ocl-demo-warning p{font-size:11px;line-height:1.7;color:#f3e4cd;margin:9px 0 0}
+.ocl-record>strong{font-size:11px;color:#ffdea8}
+@media(max-width:560px){.ocl-demo-downloads{flex-direction:column}.ocl-demo-downloads button,.ocl-demo-station>button{width:100%;justify-content:center}.ocl-demo-station{padding:14px}.ocl-demo-results p b{margin-left:0}}
