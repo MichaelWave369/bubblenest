@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -429,5 +429,23 @@
       "No automatic offline GitHub synchronization",
       "Offline study data remains untrusted, unsigned and not scientifically verified"
     ]
+  },
+  "offline_lab_self_test": {
+    "version": "2.3.0",
+    "route": "#/capsules",
+    "fixture": "Two fully synthetic non-published v2.0 Evidence Capsules generated in the browser with a frozen demonstrative timestamp",
+    "marker": "bubblenest.synthetic-offline-self-test.v1",
+    "expectation": "Two internal SHA-256 matches, intended source record differences, tampered dossier hash rejection",
+    "tests": "Actual local capsule verification and comparison code; NOT a real offline browser reload, source authentication or experimental reproduction",
+    "isolation": "Fake Issue URLs are never presented as real clickable research; demo capsules cannot mix with ordinary capsules",
+    "exports": "Clearly labeled SYNTHETIC-NOT-REAL local JSON downloads; synthetic warning on JSON/Markdown comparison reports",
+    "diagnostics": [
+      "Web Crypto available",
+      "service worker controlling tab",
+      "browser connectivity report"
+    ],
+    "permissions": "No remote GitHub API call required; no uploads, rights or agent execution authorization",
+    "manual_test": "Disconnect network, cold-reload the installed app shell, then rerun the synthetic test",
+    "documentation": "docs/OFFLINE_LAB_SELF_TEST_V2_3.md"
   }
 }
