@@ -53,7 +53,7 @@ test("rejects forged certificate, wrong kind, missing provenance and unsupported
 });
 test("rejects cross-trial and unrelated source chain even when issue counts match",()=>{
  const old=dossier();
- const next=dossier({...args,proposal:{...proposal,issueNumber:41},charter:{...charter,fusionNumber:41},
+ const next=dossier({...args,proposal:{...proposal,issueNumber:41,url:url(41)},charter:{...charter,fusionNumber:41},
    trial:{...trial,fusionNumber:41},artifacts:[],byteChecks:[],reproductions:[]});
  assert.equal(next.provenance.fusion.url,url(41));
  const compare=compareDossiers(old,next);
