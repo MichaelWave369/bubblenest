@@ -19,7 +19,8 @@ const sourceOk=(trial,charter,proposal,bubbles)=>!!trial&&
  Number.isSafeInteger(trial.issueNumber)&&trial.issueNumber>0&&
  trialsForCharter([trial],charter,proposal,bubbles).length===1;
 const chosenArtifact=(artifact,trial,charter,proposal,bubbles)=>
- !!artifact&&artifactsForTrial([artifact],trial,charter,proposal,bubbles).length===1;
+ !!artifact&&Number.isSafeInteger(artifact.issueNumber)&&artifact.issueNumber>0&&
+ artifactsForTrial([artifact],trial,charter,proposal,bubbles).length===1;
 const outcomeIsComparison=value=>["REPORTED_MATCH","REPORTED_DIFFERENCE"].includes(value);
 
 export function makeReproductionDraft({trial,charter,proposal,bubbles,artifact,outcome,
