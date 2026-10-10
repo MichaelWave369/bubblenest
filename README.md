@@ -131,6 +131,14 @@ Each public **Fusion Attempt Report** now has a **Reproduction Attempts** desk w
 
 See [Reproduction Receipts v1.6](docs/REPRODUCTION_RECEIPTS_V1_6.md).
 
+## Reproduction Audit Dossiers · Source-linked review snapshots (v1.7)
+
+Each original published Fusion **Attempt Report** now includes a **Reproduction Audit Dossier** within its Reproduction Attempts desk. It assembles the original Trial, public Artifact declarations, matching Byte Check records, reproduction attempts and contradictory results, with original GitHub links and rule-based flags for visible gaps.
+
+Download **JSON or Markdown** or copy a reviewer-friendly summary. All files are produced in the browser from the **current bounded public feed**; nothing is automatically uploaded, posted or certified. Reports explicitly declare `PARTIAL_OR_UNKNOWN` coverage, unsigned provenance and unverified scientific status. Counts are *inventory*, not evidence-quality scores.
+
+See [Reproduction Audit Dossier v1.7](docs/REPRODUCTION_AUDIT_DOSSIER_V1_7.md).
+
 ## Run locally
 
 Use Node.js 22+.
