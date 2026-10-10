@@ -52,6 +52,7 @@ function serviceWorkerHarness(){
  const invoked=[];
  const cache=new Map();
  cache.set("/bubblenest/index.html",{type:"offline-shell"});
+ cache.set("/bubblenest/assets/js-1.js",{type:"cached-asset"});
  const caches={
   match:async(path)=>cache.get(path),
   open:async()=>({addAll:async(paths)=>invoked.push(["precache",paths])}),
@@ -103,7 +104,8 @@ test("only precached shell file fetches are intercepted",async()=>{
  h.events.fetch({request:{method:"GET",url:"https://michaelwave369.github.io/bubblenest/assets/js-1.js",mode:"cors"},
   respondWith(p){result=p}});
  assert.ok(result);
- assert.deepEqual(await result,{type:"failed"});
+ assert.deepEqual(await result,{type:"cached-asset"});
+ assert.equal(h.invoked.filter(x=>x[0]==="network").length,0);
 });
 test("update activation requires explicit SKIP_WAITING message",()=>{
  const h=serviceWorkerHarness();
