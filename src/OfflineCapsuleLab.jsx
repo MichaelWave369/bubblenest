@@ -1,4 +1,4 @@
-import React,{useRef,useState}from"react";
+import React,{useEffect,useRef,useState}from"react";
 import{Archive,ArrowLeftRight,CheckCircle2,ClipboardCopy,Download,FileJson,FileText,GitCompareArrows,ShieldAlert,UploadCloud,X}from"lucide-react";
 import{CAPSULE_MAX_FILE_BYTES,parseCapsuleFile,verifyEvidenceCapsule}from"./evidenceCapsule.js";
 import{compareCapsulePair,offlineComparisonMarkdown,capsulePairFileBase}from"./offlineCapsuleLab.js";
@@ -43,11 +43,26 @@ function RecordGroup({label,part,synthetic=false}){
    <p className="ocl-hint">No differences detected in the compared fields. That does not establish scientific validity or a complete record.</p>}
  </section>;
 }
+const browserState=()=>({
+ online:navigator.onLine,
+ shellControlled:Boolean(navigator.serviceWorker?.controller),
+ cryptoAvailable:Boolean(globalThis.crypto?.subtle)
+});
 export default function OfflineCapsuleLab(){
  const [items,setItems]=useState({a:blank,b:blank});
  const [loading,setLoading]=useState({a:false,b:false});
  const [result,setResult]=useState(null),[running,setRunning]=useState(false),[notice,setNotice]=useState("");
  const [demoBusy,setDemoBusy]=useState(false),[demoChecks,setDemoChecks]=useState(null);
+ const [environment,setEnvironment]=useState(browserState);
+ useEffect(()=>{
+  const update=()=>setEnvironment(browserState());
+  window.addEventListener("online",update);window.addEventListener("offline",update);
+  navigator.serviceWorker?.addEventListener?.("controllerchange",update);
+  return()=>{
+   window.removeEventListener("online",update);window.removeEventListener("offline",update);
+   navigator.serviceWorker?.removeEventListener?.("controllerchange",update);
+  };
+ },[]);
  const requests=useRef({a:0,b:0});
  const choose=async(slot,event)=>{
   const file=event.target.files?.[0];event.target.value="";
@@ -99,7 +114,7 @@ export default function OfflineCapsuleLab(){
  const runDemo=async()=>{
   // Neither remote Issue discovery nor file uploads happen in the synthetic path.
   requests.current.a++;requests.current.b++;
-  setDemoBusy(true);setResult(null);setDemoChecks(null);setNotice("");
+  setDemoBusy(true);setEnvironment(browserState());setResult(null);setDemoChecks(null);setNotice("");
   setLoading({a:false,b:false});
   setItems({a:blank,b:blank});
   try{
@@ -165,6 +180,12 @@ export default function OfflineCapsuleLab(){
     <small>Download both files, then select them in the two slots below to rehearse the normal import workflow.
      These placeholder Issue numbers do not represent real GitHub records.</small>
    </div>}
+   <div className="ocl-demo-environment"><strong>Browser readiness (not a cold-reload test)</strong>
+    <span>Web Crypto: {environment.cryptoAvailable?"available":"unavailable"}</span>
+    <span>App shell: {environment.shellControlled?"service worker controlling":"not controlling this tab"}</span>
+    <span>Browser network report: {environment.online?"online":"offline"}</span>
+    <button type="button" onClick={()=>setEnvironment(browserState())}>Recheck browser status</button>
+   </div>
    <p className="ocl-demo-boundary">This checks local parsing, hashing, tamper rejection and comparison.
     It does NOT prove a cold offline reload works. After your browser reports the app shell ready,
     manually disconnect the network, reopen the Lab, and run the self-test again.</p>
