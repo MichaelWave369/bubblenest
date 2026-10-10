@@ -6,7 +6,7 @@ import FusionTrialPanel from "./FusionTrialPanel.jsx";
 import"./fusionCharters.css";
 const fresh={mode:"Experiment protocol",objective:"",deliverable:"",methods:"",metrics:"",credit:"",rights:"",privacy:"",stop:"",checkpoint:"",limitations:"",acknowledged:false};
 const d=s=>{const x=new Date(s||"");return Number.isNaN(x.getTime())?"Date unavailable":x.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})};
-export default function FusionCharterPanel({proposal,bubbles=[],responses=[],charters=[],trials=[],artifacts=[],byteChecks=[],reproductions=[]}){
+export default function FusionCharterPanel({proposal,bubbles=[],responses=[],charters=[],trials=[],artifacts=[],byteChecks=[],reproductions=[],feedStatus="unavailable"}){
  const [expanded,setExpanded]=useState(false),[writing,setWriting]=useState(false),[form,setForm]=useState(fresh);
  useEffect(()=>{setExpanded(false);setWriting(false);setForm(fresh)},[proposal.issueNumber]);
  const existing=useMemo(()=>chartersForFusion(charters,proposal,bubbles),[charters,proposal,bubbles]);
@@ -31,7 +31,7 @@ export default function FusionCharterPanel({proposal,bubbles=[],responses=[],cha
        <p><b>Checkpoint:</b> {c.checkpoint}</p><p><b>Limitations:</b> {c.limitations}</p>
      </details>
      <div className="fc-card-foot"><span>DRAFT ONLY · NOT AUTHORIZED</span><a href={c.url} target="_blank" rel="noopener noreferrer">Review charter Issue <ExternalLink size={14}/></a></div>
-     <FusionTrialPanel charter={c} proposal={proposal} bubbles={bubbles} trials={trials} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions}/>
+     <FusionTrialPanel charter={c} proposal={proposal} bubbles={bubbles} trials={trials} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions} feedStatus={feedStatus}/>
    </article>)}</div>:<p className="fc-empty">No public charters for this invitation in the current GitHub feed. A missing charter does not prove none exists.</p>}
    <button className="fc-toggle" type="button" onClick={()=>setWriting(x=>!x)}>{writing?<X size={16}/>:<Plus size={16}/>} {writing?"Close charter draft":"Draft a proposed charter"}</button>
    {writing&&<form className="fc-form" onSubmit={e=>e.preventDefault()}>
