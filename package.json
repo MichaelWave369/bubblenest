@@ -1,11 +1,11 @@
 {
   "name": "bubble-nest",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-pwa.mjs",
     "preview": "vite preview",
     "test": "node --test src/*.test.js"
   },

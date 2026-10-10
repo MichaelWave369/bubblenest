@@ -1,0 +1,14 @@
+/* PWA status: offline browser state and cached-shell readiness are separate signals. */
+.pwa-status{max-width:1110px;margin:0 auto 28px;padding:13px 18px;border:1px solid #456e78;border-radius:11px;background:#0e2936;color:#c8e7dc}
+.pwa-status-line{display:flex;align-items:center;gap:9px 19px;flex-wrap:wrap}
+.pwa-status-line>span{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800}
+.pwa-net.online{color:#b8f6dd}.pwa-net.offline{color:#ffcea3}
+.pwa-cache.ready{color:#c2ffe0}.pwa-cache{color:#dfc9a5}
+.pwa-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.pwa-controls:empty{display:none}
+.pwa-controls button{display:inline-flex;gap:7px;align-items:center;padding:8px 11px;border:1px solid #60968a;border-radius:8px;background:#173d3b;color:#ddfff1;font-size:10px;font-weight:800;cursor:pointer}
+.pwa-controls .pwa-update{background:#c0f9dc;color:#123c2d}
+.pwa-controls button:disabled{opacity:.5;cursor:not-allowed}
+.pwa-status>p{color:#a8c7ce;font-size:10px;line-height:1.65;margin:8px 0 0}
+.pwa-status>p.pwa-error{color:#ffd3c1}
+@media(max-width:750px){.pwa-status{margin:0 14px 18px}}

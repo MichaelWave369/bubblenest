@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -407,5 +407,27 @@
     },
     "effects": "No automatic GitHub fetch required for comparison, no uploads, no agent or experiment execution, no publishing",
     "document": "docs/OFFLINE_CAPSULE_LAB_V2_1.md"
+  },
+  "offline_pwa": {
+    "version": "2.2.0",
+    "route": "/bubblenest/#/capsules",
+    "manifest": "/bubblenest/manifest.webmanifest",
+    "service_worker": "/bubblenest/sw.js",
+    "scope": "/bubblenest/",
+    "first_install_requires_online": true,
+    "offline_static_shell": true,
+    "offline_github_issue_feed": false,
+    "precache": "Only same-origin app build files, no GitHub API, user documents, downloaded capsules or other GitHub Pages projects",
+    "update": "Install in waiting state, activate new worker only after an explicit user click",
+    "icons": "Build-generated 192x192 and 512x512 PNG, from checked-in source generator",
+    "source": "scripts/generate-pwa.mjs",
+    "instructions": "docs/OFFLINE_PWA_V2_2.md",
+    "safeguards": [
+      "Network status is only a browser connectivity signal",
+      "Capsules must be user-selected and independently saved",
+      "Cache version changes when compiled bytes change",
+      "No automatic offline GitHub synchronization",
+      "Offline study data remains untrusted, unsigned and not scientifically verified"
+    ]
   }
 }
