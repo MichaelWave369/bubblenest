@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -204,5 +204,35 @@
     ],
     "submission": "Human-reviewed prefilled public GitHub Issue",
     "document": "docs/FUSION_ARTIFACT_RECEIPTS_V1_4.md"
+  },
+  "byte_checks": {
+    "version": "1.5.0",
+    "protocol": "<!-- bubblenest:byte-check:v1 -->",
+    "policy": "CONTRIBUTOR_REPORTED_LOCAL_BYTE_COMPARISON_NOT_SCIENTIFIC_VERIFICATION",
+    "ancestry": [
+      "two published Bubble Issues",
+      "Fusion invitation",
+      "Charter",
+      "Trial",
+      "Artifact",
+      "Byte Check"
+    ],
+    "statuses": [
+      "HASH_MATCH",
+      "HASH_MISMATCH",
+      "NO_REFERENCE_DIGEST",
+      "DECLARED_SIZE_CONFLICT"
+    ],
+    "status_derivation": "Deterministic digest+size comparison; Issue parser re-derives result and rejects forged labels",
+    "source_reference": "Contributor-declared, editable Artifact SHA-256 and byte size; not authenticated",
+    "file_handling": "Browser hashes user-selected file up to 25 MiB with Web Crypto; no bytes sent or stored",
+    "claim_boundaries": [
+      "Byte identity check only",
+      "No independent authentication of original source",
+      "No scientific verification, reviewer independence or rights checks",
+      "No authorization to execute any project"
+    ],
+    "publication": "Separate manually reviewed GitHub Issue only",
+    "document": "docs/BYTE_CHECK_RECEIPTS_V1_5.md"
   }
 }
