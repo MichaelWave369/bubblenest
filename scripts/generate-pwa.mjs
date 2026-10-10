@@ -1,5 +1,6 @@
 // Built-in PWA precache generator: no extra dependencies or remote services.
-import {readdir,readFile,writeFile} from "node:fs/promises";
+import {readdir,readFile,writeFile,mkdir} from "node:fs/promises";
+import {deflateSync} from "node:zlib";
 import {createHash} from "node:crypto";
 import {resolve,relative,join,sep} from "node:path";
 import {fileURLToPath} from "node:url";
@@ -7,6 +8,40 @@ import {fileURLToPath} from "node:url";
 export const PWA_BASE="/bubblenest/";
 export const CACHE_PREFIX="bubble-nest-shell-";
 export const OMIT_FILES=new Set(["sw.js",".DS_Store"]);
+const crcTable=Array.from({length:256},(_,n)=>{
+ let c=n;for(let i=0;i<8;i++)c=c&1?0xedb88320^(c>>>1):c>>>1;
+ return c>>>0;
+});
+function pngChunk(type,data){
+ const name=Buffer.from(type,"ascii"),length=Buffer.alloc(4);
+ length.writeUInt32BE(data.length,0);
+ let crc=0xffffffff;
+ for(const b of Buffer.concat([name,data]))crc=crcTable[(crc^b)&255]^(crc>>>8);
+ const hash=Buffer.alloc(4);hash.writeUInt32BE((crc^0xffffffff)>>>0,0);
+ return Buffer.concat([length,name,data,hash]);
+}
+export function generateIconPNG(size){
+ if(!Number.isInteger(size)||size<64||size>1024)throw Error("Unsupported icon size.");
+ const stride=size*4+1,raw=Buffer.alloc(size*stride);
+ for(let y=0;y<size;y++){
+  const offset=y*stride;raw[offset]=0;
+  for(let x=0;x<size;x++){
+   const nx=(x+.5-size/2)/(size/2),ny=(y+.5-size/2)/(size/2);
+   const radius=Math.hypot(nx,ny),cos=Math.SQRT1_2;
+   const rx=(nx+ny)*cos,ry=(ny-nx)*cos;
+   const ellipse=Math.sqrt((rx/.66)**2+(ry/.30)**2);
+   let color=[11,32,48];
+   if(Math.abs(radius-.64)<.013)color=[161,248,212];
+   if(Math.abs(ellipse-1)<.048)color=[130,188,217];
+   if(Math.abs(radius-.38)<.013)color=[239,189,137];
+   if(radius<.075)color=[151,250,215];
+   const i=offset+1+x*4;raw[i]=color[0];raw[i+1]=color[1];raw[i+2]=color[2];raw[i+3]=255;
+  }
+ }
+ const ihdr=Buffer.alloc(13);ihdr.writeUInt32BE(size,0);ihdr.writeUInt32BE(size,4);ihdr[8]=8;ihdr[9]=6;
+ return Buffer.concat([Buffer.from("89504e470d0a1a0a","hex"),pngChunk("IHDR",ihdr),
+  pngChunk("IDAT",deflateSync(raw,{level:9})),pngChunk("IEND",Buffer.alloc(0))]);
+}
 export function validRelativeAsset(path){
  return typeof path==="string" && path.length>0 && !path.startsWith("/") &&
   !path.includes("\\") && !path.split("/").some(part=>part===".."||part==="."||!part) &&
@@ -55,6 +90,8 @@ export function generateWorker({files,cacheName,base=PWA_BASE}){
  return header+"\n"+worker;
 }
 export async function generateDistWorker(dist,base=PWA_BASE){
+ await mkdir(join(dist,"icons"),{recursive:true});
+ await Promise.all([192,512].map(async size=>writeFile(join(dist,"icons","icon-"+size+".png"),generateIconPNG(size))));
  const assets=await collectAssets(dist);
  if(!assets.length)throw Error("No compiled assets were found.");
  const digest=createHash("sha256");
