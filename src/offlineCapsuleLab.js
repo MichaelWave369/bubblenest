@@ -53,7 +53,17 @@ export async function compareCapsulePair(a,b,{subtle=globalThis.crypto?.subtle}=
 export function offlineComparisonMarkdown(report){
  if(!report?.ok||report.kind!==PAIR_KIND)return "";
  // The shared v1.8 Markdown serializer escapes data supplied through the capsules.
- const base=dossierDiffMarkdown(report.diff);
+ const base=dossierDiffMarkdown(report.diff)
+  .replace(/^# Reproduction Dossier Time Machine/m,"# Two-Capsule Evidence Comparison")
+  .replace(/^- Imported export:/m,"- Capsule A dossier:")
+  .replace(/^- Currently visible snapshot:/m,"- Capsule B dossier:")
+  .replace(/^Missing now means.*$/m,"Records absent from one file are not proven deleted or disproven.")
+  .replace(/^- Newly visible:/gm,"- Only in B:")
+  .replace(/^- No longer visible:/gm,"- Only in A:")
+  .replace(/^- NEW #/gm,"- ONLY IN B #")
+  .replace(/^- NOT VISIBLE NOW #/gm,"- ONLY IN A #")
+  .replace(/^- Newly visible flags:/gm,"- Flags only in B:")
+  .replace(/^- Flags no longer visible:/gm,"- Flags only in A:");
  const summary=[
   "# Offline Evidence Capsule Comparison","",
   "**UNTRUSTED RESEARCH DATA · NO AUTHENTICATED TIMELINE OR SCIENCE VERDICT**","",
