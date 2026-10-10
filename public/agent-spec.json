@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -135,5 +135,33 @@
     "authorization": "NONE. Draft Issue is not legal consent or authority to run work; two interest signals do not alter this",
     "writes": "Manual prefilled GitHub Issues only; no background agent posting or grant of permissions",
     "document": "docs/FUSION_CHARTERS_V1_2.md"
+  },
+  "fusion_trials": {
+    "protocol": "<!-- bubblenest:fusion-trial:v1 -->",
+    "version": "1.3.0",
+    "policy": "SELF_REPORTED_OBSERVATION_NOT_EXECUTION_AUTHORIZATION",
+    "linked_to": [
+      "specific public Fusion invitation Issue",
+      "public unapproved Charter Issue",
+      "two independent public original Bubble Issues"
+    ],
+    "kinds": [
+      "Planning note",
+      "Attempt report",
+      "Stopped or aborted"
+    ],
+    "assessment": "All findings are contributor-reported; not independent verification. Planning note is Not assessed; stopped attempts require a reason.",
+    "required": [
+      "question",
+      "procedure and environment",
+      "observations or reason not run",
+      "controls and reproducibility",
+      "limitations",
+      "explicit acknowledgment"
+    ],
+    "artifact_link": "Optional HTTPS only, not fetched or verified",
+    "permission": "NONE. No trial receipt authorizes any execution, third-party data exposure, spending, licenses, or agent posting.",
+    "submission": "Human-reviewed prefilled GitHub Issue; no automatic backend writes",
+    "document": "docs/FUSION_TRIAL_RECEIPTS_V1_3.md"
   }
 }
