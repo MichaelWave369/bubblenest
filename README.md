@@ -163,6 +163,14 @@ A matching internal hash only establishes **consistency between two pieces of da
 
 See [Evidence Capsules v2.0](docs/EVIDENCE_CAPSULES_V2_0.md).
 
+## Offline Capsule Lab · Two-file research comparison (v2.1)
+
+**[Open the standalone Offline Capsule Lab](https://michaelwave369.github.io/bubblenest/#/capsules)**. Select **two v2.0 Evidence Capsule JSON files**, up to 3 MiB each. The browser checks each included dossier's canonical SHA-256, rejects unsupported or mismatched source chains, and shows **A-only, B-only, changed and unchanged** Artifact, Byte Check and Reproduction records, plus original research-field and evidence-gap differences.
+
+The comparison works **without accessing the live GitHub Issues feed** once the website assets are loaded. Exports in JSON and Markdown and clipboard summaries are all local and manual. A/B labels are not authenticated chronology; missing records are not proof of deletion. Each capsule's checksum is self-contained, **not a signature, provenance certificate or scientific verdict**. No remote binary artifacts, private data or experiments are accessed.
+
+See [Offline Capsule Lab v2.1 protocol](docs/OFFLINE_CAPSULE_LAB_V2_1.md).
+
 ## Run locally
 
 Use Node.js 22+.
