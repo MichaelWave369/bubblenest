@@ -87,6 +87,14 @@ The tool accepts v0.8 / v0.9 JSON schemas and checks format, canonical Issue URL
 
 Launch Fusion from the navbar, Bubble Rooms or two public ideas compared in Bubbleverse. Passport Exchange can navigate to the studio, but imported JSON remains untrusted and must not automatically authorize a proposed partnership. See [Bubble Fusion v1.0](docs/BUBBLE_FUSION_V1_0.md).
 
+## Fusion Response Receipts · Account-signaled replies (v1.1)
+
+Each **Bubble Fusion** invitation now has a **Contributor Response Desk**. Public GitHub Issues can record *Interested in discussing*, *Request changes*, *Decline invitation*, or *Withdraw earlier interest* from someone considering a collaboration. Responses stay linked to a particular invitation and original source role (A or B).
+
+The public reader checks whether the **GitHub account authoring each response Issue matches the GitHub account that opened the corresponding original bubble**. Nonmatching responses stay visible but do not count as the origin account's signal. The newest matching-account response appears as the current position; earlier replies remain inspectable.
+
+**Interest is not legal consent.** Neither two interest signals nor original Issue authorship prove identity, rights ownership, license permission or authorization to execute a joint experiment. This is still a human-reviewed, public GitHub Issue workflow, not automatic publishing. See [Fusion Response Receipts v1.1](docs/FUSION_RESPONSE_RECEIPTS_V1_1.md).
+
 ## Run locally
 
 Use Node.js 22+.
