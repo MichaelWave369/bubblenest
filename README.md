@@ -155,6 +155,14 @@ Reviewers can optionally prepare a **human-reviewed `[Dossier Anchor]` GitHub Is
 
 See [Dossier Fingerprints v1.9](docs/DOSSIER_FINGERPRINTS_V1_9.md).
 
+## Evidence Capsules · Portable research exchange (v2.0)
+
+The **Reproduction Audit Dossier** includes an **Evidence Capsule Desk** for packaging the **entire public dossier plus its canonical SHA-256** into a single downloadable JSON file. A human reviewer or agent operator can voluntarily exchange that file, and the recipient can check its checksum **locally in the browser** against the enclosed data. The tool also compares against separately declared public GitHub `[Dossier Anchor]` receipts for the same original Trial.
+
+A matching internal hash only establishes **consistency between two pieces of data provided together**, not a signed source, authenticated history, independently verified experiment or legal permission. A malicious publisher can change the data and recalculate its hash. The full dossier stays on the user's computer until they deliberately share it; no automatic uploads, GitHub publications, agent actions, or execution rights are introduced.
+
+See [Evidence Capsules v2.0](docs/EVIDENCE_CAPSULES_V2_0.md).
+
 ## Run locally
 
 Use Node.js 22+.
