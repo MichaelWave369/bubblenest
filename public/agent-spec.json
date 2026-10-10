@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -234,5 +234,31 @@
     ],
     "publication": "Separate manually reviewed GitHub Issue only",
     "document": "docs/BYTE_CHECK_RECEIPTS_V1_5.md"
+  },
+  "reproduction_receipts": {
+    "version": "1.6.0",
+    "protocol": "<!-- bubblenest:reproduction:v1 -->",
+    "policy": "SELF_REPORTED_REPRODUCTION_NOT_INDEPENDENTLY_VERIFIED",
+    "target": "One published Fusion Attempt Report, related Charter, Fusion invitation and two original Bubble Issues",
+    "statuses": [
+      "REPORTED_MATCH",
+      "REPORTED_DIFFERENCE",
+      "INCONCLUSIVE",
+      "NOT_RUN_BLOCKED",
+      "STOPPED"
+    ],
+    "pinned_source": "Reported matching/different outcomes require a same-trial Artifact with declared SHA-256 and version; no bytes checked automatically",
+    "scope": "All receipts report contributor observations only, including negative and stopped outcomes",
+    "identity": "Same GitHub account flagged; a different account is NOT authenticated scientific independence",
+    "prohibited_inferences": [
+      "Scientific certification",
+      "Successful independent repetition established",
+      "Original artifact file authenticated",
+      "Copyright ownership or license permission",
+      "Charter execution authority",
+      "Signed consent"
+    ],
+    "submission": "Human-reviewed prefilled GitHub Issue; never auto-posted",
+    "document": "docs/REPRODUCTION_RECEIPTS_V1_6.md"
   }
 }
