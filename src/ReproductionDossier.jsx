@@ -3,6 +3,7 @@ import{ArrowUpRight,ClipboardCopy,Download,FileJson,FileText,RefreshCw,ShieldAle
 import{buildReproductionDossier,dossierMarkdown,dossierFileName}from"./reproductionDossier.js";
 import DossierTimeMachine from "./DossierTimeMachine.jsx";
 import DossierFingerprintDesk from "./DossierFingerprintDesk.jsx";
+import EvidenceCapsuleDesk from "./EvidenceCapsuleDesk.jsx";
 import"./reproductionDossier.css";
 
 const save=(name,text,type)=>{
@@ -73,6 +74,7 @@ export default function ReproductionDossier({trial,charter,proposal,bubbles=[],a
   {message&&<p role="status" className="rd-status">{message}</p>}
   {showJSON&&<pre className="rd-code">{JSON.stringify(dossier,null,2)}</pre>}
   <DossierFingerprintDesk dossier={dossier} anchors={anchors}/>
+  <EvidenceCapsuleDesk dossier={dossier} anchors={anchors}/>
   <DossierTimeMachine dossier={dossier}/>
   <p className="rd-foot">No integrity seal, file contents, independently authenticated participants, complete history, science verdict or execution rights are supplied. <strong>Ledger Above Bruv.</strong></p>
  </section>;
