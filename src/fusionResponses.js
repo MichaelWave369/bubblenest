@@ -16,7 +16,8 @@ const clean=(value,length=1200)=>cleanEvidenceText(value,length).replace(/^---$/
 const signedAccount=name=>typeof name==="string"&&/^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/.test(name);
 export function makeFusionResponseDraft({proposal,role,kind,scope,limits,note}={}){
  if(!proposal||!Number.isSafeInteger(proposal.issueNumber)||proposal.issueNumber<1||
-  !Number.isSafeInteger(proposal.aNumber)||!Number.isSafeInteger(proposal.bNumber)||
+  !Number.isSafeInteger(proposal.aNumber)||proposal.aNumber<1||
+  !Number.isSafeInteger(proposal.bNumber)||proposal.bNumber<1||
   proposal.aNumber===proposal.bNumber||!RESPONSE_ROLES.includes(role)||!RESPONSE_KINDS.includes(kind))return null;
  const source=role==="A"?proposal.aNumber:proposal.bNumber;
  const scopeText=clean(scope,1100),limitsText=clean(limits,900),noteText=clean(note,650);
