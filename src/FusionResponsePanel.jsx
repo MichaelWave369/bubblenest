@@ -19,7 +19,7 @@ export default function FusionResponsePanel({proposal,bubbles=[],responses=[]}){
   <div className="fr-top"><div><strong>Contributor Response Desk</strong><p>{info.all.length} public response(s) visible for this specific invitation</p></div><button type="button" onClick={()=>setExpanded(v=>!v)} aria-expanded={expanded}><MessageSquare size={15}/>{expanded?"Hide responses":"Inspect responses"}</button></div>
   {expanded&&<>
    <div className="fr-signals"><Signal label={"SOURCE A · #"+proposal.aNumber} author={a?.author} response={info.a}/><Signal label={"SOURCE B · #"+proposal.bNumber} author={b?.author} response={info.b}/></div>
-   {info.pairedInterest&&<p className="fr-interest"><Info size={16}/> Both source-issue author accounts have submitted an interest signal. This is **not** a mutual agreement, license grant or authorization to begin joint work.</p>}
+   {info.pairedInterest&&<p className="fr-interest"><Info size={16}/> Both source-issue author accounts have submitted an interest signal. This is not a mutual agreement, license grant or authorization to begin joint work.</p>}
    <p className="fr-guard"><ShieldAlert size={17}/> Account matches are based on GitHub issue authorship only. Original source authorship, human identity, permissions and the content of edited issues are not independently verified. Later responses supersede earlier signals in this display but do not erase their records.</p>
    {info.all.length?<div className="fr-list">{info.all.map(r=><article className="fr-entry" key={r.id}>
     <div className="fr-entry-head"><span>{r.role==="A"?"Source A":"Source B"} · {r.kind}</span><small>{r.originAccountMatch?"Matches source Issue author account":"Other account · not counted as source response"}</small></div>
