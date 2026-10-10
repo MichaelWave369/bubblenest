@@ -6,6 +6,8 @@ import {compareDossiers,dossierDiffMarkdown} from "./dossierDiff.js";
 export const PAIR_KIND="bubblenest.offline-capsule-comparison";
 export const PAIR_VERSION="2.1.0";
 export const PAIR_POLICY="UNTRUSTED_OFFLINE_SNAPSHOTS_NOT_AUTHENTICATED_HISTORY";
+const DEMO_MARKER="bubblenest.synthetic-offline-self-test.v1";
+const isDemo=x=>x?.dossier?.synthetic_demo?.kind===DEMO_MARKER;
 export async function compareCapsulePair(a,b,{subtle=globalThis.crypto?.subtle}={}){
  const [left,right]=await Promise.all([
   verifyEvidenceCapsule(a,{subtle}),verifyEvidenceCapsule(b,{subtle})
@@ -14,6 +16,13 @@ export async function compareCapsulePair(a,b,{subtle=globalThis.crypto?.subtle}=
   ok:false,status:"CAPSULE_INTEGRITY_NOT_CONFIRMED",
   errors:[...(!left.ok?["Capsule A: "+left.status+" · "+left.errors.join("; ")]:[]),
    ...(!right.ok?["Capsule B: "+right.status+" · "+right.errors.join("; ")]:[])],
+  integrity:{a:left.status,b:right.status}
+ };
+ const demoA=isDemo(a),demoB=isDemo(b);
+ if(demoA!==demoB||Boolean(a?.dossier?.synthetic_demo)!==demoA||
+  Boolean(b?.dossier?.synthetic_demo)!==demoB)return {
+  ok:false,status:"SYNTHETIC_REAL_MIX_BLOCKED",
+  errors:["Fictional training capsules cannot be compared with research capsules or unknown demo formats."],
   integrity:{a:left.status,b:right.status}
  };
  if(!sameCapsuleChain(a.dossier,b.dossier))return {
@@ -38,6 +47,7 @@ export async function compareCapsulePair(a,b,{subtle=globalThis.crypto?.subtle}=
  return {
   ok:true,status:fingerprintMatch?"SAME_CANONICAL_DOSSIER_CONTENT":"DIFFERENT_CANONICAL_DOSSIER_CONTENT",
   kind:PAIR_KIND,schema_version:PAIR_VERSION,policy:PAIR_POLICY,
+  synthetic_demonstration:demoA?"SYNTHETIC DEMONSTRATION, NO PUBLISHED GITHUB ISSUES":null,
   source_trial:a.dossier.provenance.original_trial.url,
   capsule_a:{claimed_created_at:a.created_at,dossier_generated_at:a.dossier.generated_at,
    canonical_sha256:a.fingerprint.digest,canonical_bytes:a.fingerprint.bytes},
@@ -79,7 +89,9 @@ export function offlineComparisonMarkdown(report){
   "## Detailed evidence inventory comparison","",
   base
  ];
- return summary.join("\n");
+ return (report.synthetic_demonstration?
+  "# SYNTHETIC TRAINING COMPARISON · NOT REAL RESEARCH\n\n**All Issue references below are fictional placeholders and do not identify published GitHub records.**\n\n":"")+
+  summary.join("\n");
 }
 export const capsulePairFileBase=(report)=>report?.ok?
  "capsule-compare-trial-"+report.diff.source_trial.split("/").at(-1)+"-v2-1":"capsule-compare-unavailable";
