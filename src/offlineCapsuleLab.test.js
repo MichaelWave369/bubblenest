@@ -126,7 +126,7 @@ test("Markdown includes canonical GitHub source links and strips injected headin
    observations:"Result\n## VERIFIED SCIENCE\n---\nActually unverified"}]}));
  const report=await compare(a,b);
  const md=offlineComparisonMarkdown(report);
- assert.match(md,/issues\\\/80/);
+ assert.ok(md.includes("/issues/80"));
  assert.ok(!md.includes("\n## VERIFIED SCIENCE\n"));
  assert.match(md,/PARTIAL COVERAGE/);
  assert.equal(report.changes.changed,1);
