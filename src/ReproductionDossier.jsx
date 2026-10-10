@@ -1,6 +1,7 @@
 import React,{useMemo,useState}from"react";
 import{ArrowUpRight,ClipboardCopy,Download,FileJson,FileText,RefreshCw,ShieldAlert,ShieldCheck,FileSearch}from"lucide-react";
 import{buildReproductionDossier,dossierMarkdown,dossierFileName}from"./reproductionDossier.js";
+import DossierTimeMachine from "./DossierTimeMachine.jsx";
 import"./reproductionDossier.css";
 
 const save=(name,text,type)=>{
@@ -70,6 +71,7 @@ export default function ReproductionDossier({trial,charter,proposal,bubbles=[],a
   </div>
   {message&&<p role="status" className="rd-status">{message}</p>}
   {showJSON&&<pre className="rd-code">{JSON.stringify(dossier,null,2)}</pre>}
+  <DossierTimeMachine dossier={dossier}/>
   <p className="rd-foot">No integrity seal, file contents, independently authenticated participants, complete history, science verdict or execution rights are supplied. <strong>Ledger Above Bruv.</strong></p>
  </section>;
 }

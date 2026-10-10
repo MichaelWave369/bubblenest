@@ -139,6 +139,14 @@ Download **JSON or Markdown** or copy a reviewer-friendly summary. All files are
 
 See [Reproduction Audit Dossier v1.7](docs/REPRODUCTION_AUDIT_DOSSIER_V1_7.md).
 
+## Dossier Time Machine · Compare research snapshots (v1.8)
+
+A published original Trial's **Reproduction Audit Dossier** now has a **Dossier Time Machine**. Import an earlier exported v1.7 dossier JSON file (max **2 MiB**) and compare its content to the current browser-visible snapshot for the **same** two source Bubbles, Fusion, Charter and original Trial. Differences are shown as *newly visible*, *no longer visible*, *changed* or *unchanged* Artifact, Byte Check and reproduction records, plus source-field changes and evidence-gap flags.
+
+Imported files stay in the browser and are **untrusted**; files are never uploaded, GitHub posts are never made automatically, and the comparison is **not a verified audit trail**. A missing record may simply reflect the bounded 300-Issue feed, changed Issue text or an outage. Download diff JSON or Markdown, or copy a summary for a human reviewer or authorized agent.
+
+Read the [Dossier Time Machine v1.8 protocol](docs/DOSSIER_TIME_MACHINE_V1_8.md).
+
 ## Run locally
 
 Use Node.js 22+.

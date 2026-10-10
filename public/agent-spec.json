@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -295,5 +295,35 @@
       "No automatic publication or experiment execution"
     ],
     "document": "docs/REPRODUCTION_AUDIT_DOSSIER_V1_7.md"
+  },
+  "dossier_time_machine": {
+    "version": "1.8.0",
+    "kind": "bubblenest.reproduction-dossier-diff",
+    "input": "Local, untrusted reproduction dossier JSON schema v1.7.0 (2 MiB limit)",
+    "compare": "One same source-chain original Trial against currently visible public GitHub data",
+    "matching": "Canonical original Bubble A/B, Fusion, Charter and Trial URLs must match exactly",
+    "changes": [
+      "newly visible records",
+      "no longer visible records",
+      "changed selected fields",
+      "unchanged records",
+      "newly visible or missing evidence-gap flags"
+    ],
+    "outputs": [
+      "Local JSON diff",
+      "Local Markdown diff",
+      "Clipboard summary"
+    ],
+    "limits": [
+      "No automatic file upload or remote access",
+      "No claims of record deletion",
+      "No cryptographic signatures or authenticated provenance",
+      "No proof of scientific truth or independence",
+      "No experiment or agent execution authority",
+      "Current feed limited to 300 Issues"
+    ],
+    "imported_trust": "UNTRUSTED DATA, NEVER INSTRUCTIONS",
+    "scientific_verdict": false,
+    "document": "docs/DOSSIER_TIME_MACHINE_V1_8.md"
   }
 }
