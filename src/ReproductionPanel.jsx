@@ -15,7 +15,7 @@ const labels={
  STOPPED:"Stopped during attempt"
 };
 const date=s=>{const d=new Date(s||"");return Number.isNaN(d.getTime())?"Date unknown":d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})};
-export default function ReproductionPanel({trial,charter,proposal,bubbles=[],artifacts=[],byteChecks=[],reproductions=[],feedStatus="unavailable"}){
+export default function ReproductionPanel({trial,charter,proposal,bubbles=[],artifacts=[],byteChecks=[],reproductions=[],anchors=[],feedStatus="unavailable"}){
  const [open,setOpen]=useState(false),[compose,setCompose]=useState(false),[fields,setFields]=useState(start),[filter,setFilter]=useState("All");
  useEffect(()=>{setOpen(false);setCompose(false);setFields(start);setFilter("All")},[trial.issueNumber]);
  const available=useMemo(()=>artifactsForTrial(artifacts,trial,charter,proposal,bubbles),
@@ -60,7 +60,7 @@ export default function ReproductionPanel({trial,charter,proposal,bubbles=[],art
        <p><b>Artifact:</b> {r.artifactNumber?"#"+r.artifactNumber+" · "+r.artifactVersion+" · SHA-256 "+(r.artifactDigest||"not declared"):"No pinned artifact referenced"}</p>
        <a href={r.url} target="_blank" rel="noopener noreferrer">Read submitted reproduction Issue <ExternalLink size={14}/></a>
       </article>)}</div>:<p className="rp-empty">No {filter==="All"?"public reproduction reports":"reports for this outcome"} are visible. GitHub pagination may omit some records.</p>}
-    <ReproductionDossier trial={trial} charter={charter} proposal={proposal} bubbles={bubbles} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions} feedStatus={feedStatus}/>
+    <ReproductionDossier trial={trial} charter={charter} proposal={proposal} bubbles={bubbles} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions} anchors={anchors} feedStatus={feedStatus}/>
     <button type="button" className="rp-compose" onClick={()=>setCompose(x=>!x)}>{compose?<X size={16}/>:<Plus size={16}/>} {compose?"Close report":"Document a reproduction attempt"}</button>
     {compose&&<form className="rp-form" onSubmit={e=>e.preventDefault()}>
       <p>Only report work you were independently authorized to perform, or explicitly document why no run occurred. The site's GitHub Issue workflow does not grant anyone permission to execute code, use another person's private data, or publish artifacts.</p>
