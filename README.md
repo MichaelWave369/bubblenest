@@ -103,6 +103,12 @@ Each Charter is **DRAFT FOR PUBLIC REVIEW, NOT AUTHORIZED**. Neither a submitted
 
 See [Fusion Charters v1.2 protocol](docs/FUSION_CHARTERS_V1_2.md).
 
+## Fusion Trial Receipts · Observations and stopped-work records (v1.3)
+
+Each public **Fusion Charter** now includes a **Trial Receipt Ledger** for reporting unexecuted plans, attempted experiments, and stopped or aborted work. Reports require procedures, controls and reproducibility information, specific observations or reasons no work took place, explicit uncertainty, and an optional public HTTPS artifact. A stopped attempt requires a reason. **A planning note cannot claim an assessed result.**
+
+Every receipt is an attributable, manually published GitHub Issue tied to the exact Charter, Fusion invitation, and both original Bubble Issues. A **Charter remains an unauthorized proposal** regardless of trial reports; interest signals are not legal consent, and reported results are not independently verified. See [Fusion Trial Receipts v1.3 protocol](docs/FUSION_TRIAL_RECEIPTS_V1_3.md).
+
 ## Run locally
 
 Use Node.js 22+.
