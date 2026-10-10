@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -163,5 +163,46 @@
     "permission": "NONE. No trial receipt authorizes any execution, third-party data exposure, spending, licenses, or agent posting.",
     "submission": "Human-reviewed prefilled GitHub Issue; no automatic backend writes",
     "document": "docs/FUSION_TRIAL_RECEIPTS_V1_3.md"
+  },
+  "fusion_artifacts": {
+    "version": "1.4.0",
+    "protocol": "<!-- bubblenest:artifact:v1 -->",
+    "policy": "DECLARED_ARTIFACT_METADATA_NOT_REMOTE_VERIFICATION",
+    "source_chain": [
+      "two original public Bubble Issues",
+      "public Fusion Issue",
+      "public Charter Issue",
+      "public Trial Issue",
+      "new Artifact Issue"
+    ],
+    "fields": [
+      "kind",
+      "name",
+      "version",
+      "file byte count optional",
+      "SHA-256 optional",
+      "HTTPS URL optional",
+      "provenance",
+      "runtime/environment",
+      "reproduction steps",
+      "rights declaration",
+      "uncertainty"
+    ],
+    "sha256_status": [
+      "SHA256_DECLARED_NOT_VERIFIED",
+      "NO_SHA256_DECLARED"
+    ],
+    "max_local_browser_hash_bytes": 26214400,
+    "calculation": "Web Crypto in-browser for selected local file; bytes are never uploaded",
+    "guardrails": [
+      "No independent artifact inspection",
+      "No remote URL identity check",
+      "No ownership or licensing proof",
+      "No scientific certification",
+      "No authority to execute unapproved Charter or share private data",
+      "No automatic publishing"
+    ],
+    "submission": "Human-reviewed prefilled public GitHub Issue",
+    "document": "docs/FUSION_ARTIFACT_RECEIPTS_V1_4.md"
   }
 }
