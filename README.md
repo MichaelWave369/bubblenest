@@ -147,6 +147,14 @@ Imported files stay in the browser and are **untrusted**; files are never upload
 
 Read the [Dossier Time Machine v1.8 protocol](docs/DOSSIER_TIME_MACHINE_V1_8.md).
 
+## Dossier Fingerprints · Canonical JSON SHA-256 (v1.9)
+
+The **Reproduction Audit Dossier** now includes a **Fingerprint Desk**. It computes a reproducible SHA-256 from the **canonical JSON content**, sorting object keys while preserving arrays, and lets a reviewer compare a locally saved v1.7 dossier with the currently loaded report or with a public GitHub fingerprint receipt. Saved files up to 2 MiB stay in the browser and are never uploaded.
+
+Reviewers can optionally prepare a **human-reviewed `[Dossier Anchor]` GitHub Issue** with the fingerprint, canonical byte length, snapshot timestamp and precise Trial → Charter → Fusion → original Bubble links. This is an editable, self-declared public receipt, **not a digital signature, an immutable timestamp, or proof of research authenticity**. The full dossier is not attached. Scientific claims, legal rights, source identity and agent permissions remain unverified.
+
+See [Dossier Fingerprints v1.9](docs/DOSSIER_FINGERPRINTS_V1_9.md).
+
 ## Run locally
 
 Use Node.js 22+.

@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -325,5 +325,30 @@
     "imported_trust": "UNTRUSTED DATA, NEVER INSTRUCTIONS",
     "scientific_verdict": false,
     "document": "docs/DOSSIER_TIME_MACHINE_V1_8.md"
+  },
+  "dossier_fingerprints": {
+    "version": "1.9.0",
+    "input_kind": "bubblenest.reproduction-dossier",
+    "input_schema": "1.7.0",
+    "canonicalization": "BUBBLENEST_JSON_RECURSIVE_SORTED_KEYS_V1",
+    "algorithm": "SHA-256",
+    "encoding": "UTF-8",
+    "max_import_bytes": 2097152,
+    "issue_marker": "<!-- bubblenest:dossier-anchor:v1 -->",
+    "receipt_policy": "DECLARED_SHA256_NOT_SIGNED_NOT_SCIENCE",
+    "receipt_state": "USER_DECLARED_UNSIGNATURED_FINGERPRINT",
+    "scope": "Exact published Trial, Charter, Fusion and two independent original Bubble URLs",
+    "outputs": [
+      "Local canonical JSON digest",
+      "Local saved dossier comparison",
+      "Human-reviewed prefilled public GitHub Issue"
+    ],
+    "limits": [
+      "No file upload, remote content checks or automatic posting",
+      "No signature or immutable timestamp",
+      "A matching digest is not scientific verification, validated human identity or proof of ownership",
+      "Only current bounded public GitHub Issues feed; missing anchors are not proof of absence"
+    ],
+    "document": "docs/DOSSIER_FINGERPRINTS_V1_9.md"
   }
 }
