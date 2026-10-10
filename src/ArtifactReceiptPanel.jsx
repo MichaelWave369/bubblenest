@@ -1,11 +1,12 @@
 import React,{useEffect,useMemo,useState}from"react";
 import{ArrowUpRight,ClipboardList,ExternalLink,FileArchive,FileCheck2,FileUp,Fingerprint,Info,Plus,ShieldAlert,ShieldCheck,X}from"lucide-react";
 import{ARTIFACT_KINDS,ARTIFACT_MAX_LOCAL_HASH_BYTES,makeArtifactDraft,artifactsForTrial,artifactCounts}from"./artifactData.js";
+import ByteCheckPanel from "./ByteCheckPanel.jsx";
 import"./artifactReceipts.css";
 const fresh={kind:"Dataset",name:"",version:"",fileBytes:"",digest:"",artifactURL:"",
  provenance:"",environment:"",steps:"",license:"",limitations:"",acknowledged:false};
 const when=s=>{const d=new Date(s||"");return Number.isNaN(d.getTime())?"Date unavailable":d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})};
-export default function ArtifactReceiptPanel({trial,charter,proposal,bubbles=[],artifacts=[]}){
+export default function ArtifactReceiptPanel({trial,charter,proposal,bubbles=[],artifacts=[],byteChecks=[]}){
  const[expanded,setExpanded]=useState(false),[writing,setWriting]=useState(false),[form,setForm]=useState(fresh),
   [hashMessage,setHashMessage]=useState(""),[hashing,setHashing]=useState(false);
  useEffect(()=>{setExpanded(false);setWriting(false);setForm(fresh);setHashMessage("")},[trial.issueNumber]);
@@ -53,6 +54,7 @@ export default function ArtifactReceiptPanel({trial,charter,proposal,bubbles=[],
      <p><b>Limitations:</b> {r.limitations}</p>
      {r.artifactURL?<a className="ar-source" href={r.artifactURL} rel="noopener noreferrer" target="_blank">Open contributor-declared public artifact <ExternalLink size={14}/></a>:<p className="ar-source-missing">No public artifact URL. Independent retrieval is not available from this receipt.</p>}
      <div className="ar-record-foot"><span>METADATA · NOT VERIFIED</span><a href={r.url} rel="noopener noreferrer" target="_blank">Read GitHub receipt <ArrowUpRight size={14}/></a></div>
+     <ByteCheckPanel artifact={r} trial={trial} charter={charter} proposal={proposal} bubbles={bubbles} checks={byteChecks}/>
     </article>)}</div>:<p className="ar-empty">No artifact records visible for this Trial. The public feed is bounded, so this is not proof of absence.</p>}
    <button className="ar-compose" type="button" onClick={()=>setWriting(v=>!v)}>{writing?<X size={16}/>:<Plus size={16}/>} {writing?"Close metadata draft":"Add artifact metadata"}</button>
    {writing&&<form className="ar-form" onSubmit={e=>e.preventDefault()}>
