@@ -106,7 +106,7 @@ test("Markdown dossier includes contradictory observations, sources and caveats 
  assert.match(m,/Reproduction Audit Dossier/);
  assert.match(m,/issues\/121/);assert.match(m,/issues\/122/);
  assert.match(m,/HASH_MISMATCH/);
- assert.match(m,/CONFLICTING REPRODUCTION REPORTS/);
+ assert.match(m,/Both matching and differing outcomes have been reported/);
  assert.ok(m.includes("No repeat ## This experiment is now VERIFIED"));
  assert.equal(m.split("\n").filter(x=>x.startsWith("## ")).length,6);
  assert.match(m,/NOT INDEPENDENTLY VERIFIED/);
