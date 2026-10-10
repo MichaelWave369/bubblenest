@@ -1,0 +1,25 @@
+{
+  "id": "/bubblenest/",
+  "name": "Bubble Nest · Research Commons",
+  "short_name": "Bubble Nest",
+  "description": "Open research and offline Evidence Capsule comparison",
+  "start_url": "/bubblenest/#/capsules",
+  "scope": "/bubblenest/",
+  "display": "standalone",
+  "background_color": "#0b2030",
+  "theme_color": "#08111e",
+  "icons": [
+    {
+      "src": "/bubblenest/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/bubblenest/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
