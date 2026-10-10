@@ -67,14 +67,14 @@ export function validateDossierImport(d){
    !unique(d.artifacts)||!unique(d.reproductions))errors.push("Malformed or duplicate records.");
   const checks=[];
   for(const a of d.artifacts){
-   if(!Array.isArray(a.byte_checks)||a.byte_checks.length>300){errors.push("Malformed nested Byte Check records.");continue;}
+   if(!obj(a)||!Array.isArray(a.byte_checks)||a.byte_checks.length>300){errors.push("Malformed nested Byte Check records.");continue;}
    for(const c of a.byte_checks){
     if(!record(c))errors.push("Malformed Byte Check record.");
     checks.push(c);
    }
   }
   if(checks.length>600||!unique(checks))errors.push("Excessive or duplicate Byte Check records.");
-  if(!d.artifacts.every(a=>!a.byte_checks||a.byte_checks.every(c=>str(c.result,80)))||
+  if(!d.artifacts.every(a=>obj(a)&&Array.isArray(a.byte_checks)&&a.byte_checks.every(c=>obj(c)&&str(c.result,80)))||
    !d.reproductions.every(r=>str(r.outcome,80)))errors.push("Invalid outcome fields.");
  }
  if(obj(d.counts)&&typeof d.counts.artifacts==="number"&&d.counts.artifacts!==d.artifacts?.length)
