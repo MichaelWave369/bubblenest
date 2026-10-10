@@ -34,3 +34,8 @@
 .ocl-demo-warning p{font-size:11px;line-height:1.7;color:#f3e4cd;margin:9px 0 0}
 .ocl-record>strong{font-size:11px;color:#ffdea8}
 @media(max-width:560px){.ocl-demo-downloads{flex-direction:column}.ocl-demo-downloads button,.ocl-demo-station>button{width:100%;justify-content:center}.ocl-demo-station{padding:14px}.ocl-demo-results p b{margin-left:0}}
+
+.ocl-demo-environment{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:12px}
+.ocl-demo-environment>strong{width:100%;font-size:11px;color:#ffedb6}
+.ocl-demo-environment>span{padding:8px 9px;border:1px solid #89947a;border-radius:8px;color:#e1e9d0;background:#263d40;font-size:10px}
+.ocl-demo-environment>button{border:1px solid #9eae82;border-radius:8px;background:#314942;color:#eeffe2;padding:8px 10px;font-size:10px;font-weight:800}
