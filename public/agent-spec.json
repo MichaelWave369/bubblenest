@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -125,5 +125,15 @@
     "meaning": "Signals are expressions, not authenticated real-world identity, rights ownership, contracts, permission, or scientific validation",
     "silence": "not agreement",
     "automatic_posting": false
+  },
+  "fusion_charters": {
+    "protocol": "<!-- bubblenest:fusion-charter:v1 -->",
+    "version": "1.2.0",
+    "phase": "DRAFT_FOR_PUBLIC_REVIEW_NOT_AUTHORIZED",
+    "dependency": "Must link one existing public Fusion invitation and both exact original public Bubble Issues",
+    "contract": "Structured prospective research/creative charter with independent attribution, methods, evaluation, deliverables, permission and privacy boundaries, withdrawal/stop conditions, uncertainty and human review checkpoint",
+    "authorization": "NONE. Draft Issue is not legal consent or authority to run work; two interest signals do not alter this",
+    "writes": "Manual prefilled GitHub Issues only; no background agent posting or grant of permissions",
+    "document": "docs/FUSION_CHARTERS_V1_2.md"
   }
 }
