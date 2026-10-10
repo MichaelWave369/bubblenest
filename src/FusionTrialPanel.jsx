@@ -8,7 +8,7 @@ import"./fusionTrials.css";
 const blank={kind:"Planning note",finding:"Not assessed",question:"",procedure:"",observations:"",
  controls:"",artifacts:"",limitations:"",stopNote:"",next:"",acknowledged:false};
 const formatDate=s=>{const d=new Date(s||"");return Number.isNaN(d.getTime())?"Date unavailable":d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})};
-export default function FusionTrialPanel({charter,proposal,bubbles=[],trials=[],artifacts=[],byteChecks=[],reproductions=[],feedStatus="unavailable"}){
+export default function FusionTrialPanel({charter,proposal,bubbles=[],trials=[],artifacts=[],byteChecks=[],reproductions=[],anchors=[],feedStatus="unavailable"}){
  const[expanded,setExpanded]=useState(false),[writing,setWriting]=useState(false),[form,setForm]=useState(blank);
  useEffect(()=>{setExpanded(false);setWriting(false);setForm(blank)},[charter.issueNumber]);
  const records=useMemo(()=>trialsForCharter(trials,charter,proposal,bubbles),[trials,charter,proposal,bubbles]);
@@ -33,7 +33,7 @@ export default function FusionTrialPanel({charter,proposal,bubbles=[],trials=[],
     {r.artifacts&&<a href={r.artifacts} target="_blank" rel="noopener noreferrer">Open submitted public artifact <ExternalLink size={13}/></a>}
     <div className="ft-receipt-foot"><span>REPORTED · NOT VERIFIED OR AUTHORIZED</span><a href={r.url} target="_blank" rel="noopener noreferrer">Read GitHub Issue <ArrowUpRight size={14}/></a></div>
     <ArtifactReceiptPanel trial={r} charter={charter} proposal={proposal} bubbles={bubbles} artifacts={artifacts} byteChecks={byteChecks}/>
-    {r.kind==="Attempt report"&&<ReproductionPanel trial={r} charter={charter} proposal={proposal} bubbles={bubbles} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions} feedStatus={feedStatus}/>}
+    {r.kind==="Attempt report"&&<ReproductionPanel trial={r} charter={charter} proposal={proposal} bubbles={bubbles} artifacts={artifacts} byteChecks={byteChecks} reproductions={reproductions} anchors={anchors} feedStatus={feedStatus}/>}
    </article>)}</div>:<p className="ft-empty">No trial receipts are visible for this Charter. It might not have been used, or the bounded GitHub feed may omit earlier records.</p>}
    <button className="ft-toggle" type="button" onClick={()=>setWriting(v=>!v)}>{writing?<X size={16}/>:<Plus size={16}/>} {writing?"Close receipt draft":"Document a plan, attempt, or stopped test"}</button>
    {writing&&<form className="ft-form" onSubmit={e=>e.preventDefault()}>
