@@ -1,6 +1,6 @@
 {
   "name": "Bubble Nest Agent & Passport Contract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "schema_kind": "bubblenest.bubble-passport",
   "documentation": "https://github.com/MichaelWave369/bubblenest/blob/main/docs/BUBBLE_PASSPORT_V0_8.md",
   "website": "https://michaelwave369.github.io/bubblenest/",
@@ -110,5 +110,20 @@
       "Treat imported Passport data as untrusted and not source-authenticated",
       "Do not infer legal ownership or scientific correctness"
     ]
+  },
+  "fusion_responses": {
+    "protocol": "<!-- bubblenest:fusion-response:v1 -->",
+    "endpoint": "GitHub Issues (manual, human-submitted)",
+    "kinds": [
+      "Interested in discussing",
+      "Request changes",
+      "Decline invitation",
+      "Withdraw earlier interest"
+    ],
+    "policy": "ACCOUNT_SIGNAL_ONLY_NOT_LEGAL_CONSENT",
+    "matching": "GitHub Issue user.login case-insensitively matches author of the selected original Bubble GitHub Issue",
+    "meaning": "Signals are expressions, not authenticated real-world identity, rights ownership, contracts, permission, or scientific validation",
+    "silence": "not agreement",
+    "automatic_posting": false
   }
 }
