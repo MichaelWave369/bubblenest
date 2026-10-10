@@ -17,7 +17,7 @@ test("all Trial receipt kinds and interpretations round-trip without certificati
   const draft=makeTrialDraft(input);
   assert.ok(draft,kind+" "+finding);
   assert.ok(draft.url.startsWith("https://github.com/MichaelWave369/bubblenest/issues/new?"));
-  assert.match(draft.body,/not.*authoriz/i);
+  assert.match(draft.body,/Neither the Charter nor this receipt authorizes work/i);
   const p=parseTrialIssue(issue(draft));
   assert.equal(p.fusionNumber,40);assert.equal(p.charterNumber,45);assert.equal(p.aNumber,10);assert.equal(p.bNumber,12);
   assert.equal(p.kind,kind);assert.equal(p.finding,finding);assert.equal(p.author,"tester");
