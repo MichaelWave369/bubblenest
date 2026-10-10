@@ -179,6 +179,14 @@ The standalone **[Offline Capsule Lab](https://michaelwave369.github.io/bubblene
 
 The default production build generates stable 192/512 PNG icons and a revisioned `dist/sw.js` precache manifest with Node built-ins; no new package dependencies. See [Offline PWA v2.2 documentation](docs/OFFLINE_PWA_V2_2.md) for first-use, offline limitations and user-controlled updates.
 
+## Synthetic Offline Lab Self-Test (v2.3)
+
+The [Offline Capsule Lab](https://michaelwave369.github.io/bubblenest/#/capsules) now includes a **one-click synthetic self-test**. It generates two openly fictional Evidence Capsules and uses the **real local SHA-256 and dossier-comparison code** to check two valid internal hashes, a deliberate disagreement and missing-record difference, and an altered-data checksum failure. The outcomes are displayed as explicit PASS/FAIL results.
+
+You can download the clearly labeled fictional capsules and rehearse the normal two-file import flow, even after loading the installed PWA offline. Demo URLs use fake high-numbered Issue placeholders required by the shared schema and are **not public records**. Synthetic files cannot be silently mixed with research-labeled capsules, and the UI does not make those placeholder URLs clickable.
+
+The demo also displays the browser's Web Crypto capability, service-worker control and online/offline report. **Passing these local tests does not establish that an offline cold reload works**. Disconnect the network and actually reload the app to test its cache. Read [Offline Lab Self-Test v2.3](docs/OFFLINE_LAB_SELF_TEST_V2_3.md) for exact steps and non-verification boundaries.
+
 ## Run locally
 
 Use Node.js 22+.
