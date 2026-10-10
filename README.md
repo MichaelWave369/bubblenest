@@ -109,6 +109,14 @@ Each public **Fusion Charter** now includes a **Trial Receipt Ledger** for repor
 
 Every receipt is an attributable, manually published GitHub Issue tied to the exact Charter, Fusion invitation, and both original Bubble Issues. A **Charter remains an unauthorized proposal** regardless of trial reports; interest signals are not legal consent, and reported results are not independently verified. See [Fusion Trial Receipts v1.3 protocol](docs/FUSION_TRIAL_RECEIPTS_V1_3.md).
 
+## Fusion Artifact Receipts · Reproducibility metadata (v1.4)
+
+Each public **Fusion Trial** now has an **Artifact Receipt Ledger** for specific datasets, code snapshots, test logs, results, model files and other supporting artifacts. Contributors can record filename, version, origin, environment, reproduction steps, reported licensing/permissions, uncertainty and an optional public HTTPS link.
+
+An optional SHA-256 digest can be calculated **locally in the browser from a selected file up to 25 MiB**, without uploading its bytes. Larger files can be hashed using a trusted desktop tool, then entered manually. The interface labels hashes as **declared, not independently checked**, and missing hashes as **not supplied**. A checksum never proves experimental truth, file authorship, or consent. Artifact metadata is published only after explicit user review of a prefilled GitHub Issue, linked to the original Trial → Charter → Fusion → two independent Bubble sources.
+
+See the [Fusion Artifact Receipts v1.4 protocol](docs/FUSION_ARTIFACT_RECEIPTS_V1_4.md).
+
 ## Run locally
 
 Use Node.js 22+.
