@@ -14,6 +14,9 @@ const section=(body,heading)=>{
 };
 export function availableCharterProposal(proposal,bubbles){
  return !!proposal&&Number.isSafeInteger(proposal.issueNumber)&&proposal.issueNumber>0&&
+  Number.isSafeInteger(proposal.aNumber)&&proposal.aNumber>0&&
+  Number.isSafeInteger(proposal.bNumber)&&proposal.bNumber>0&&
+  proposal.aNumber!==proposal.bNumber&&
   visibleFusionIssues([proposal],bubbles).length===1;
 }
 export function makeCharterDraft({proposal,bubbles,mode,objective,deliverable,methods,metrics,credit,rights,privacy,stop,checkpoint,limitations,acknowledged}={}){
