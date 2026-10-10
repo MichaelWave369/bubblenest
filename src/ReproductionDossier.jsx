@@ -2,6 +2,7 @@ import React,{useMemo,useState}from"react";
 import{ArrowUpRight,ClipboardCopy,Download,FileJson,FileText,RefreshCw,ShieldAlert,ShieldCheck,FileSearch}from"lucide-react";
 import{buildReproductionDossier,dossierMarkdown,dossierFileName}from"./reproductionDossier.js";
 import DossierTimeMachine from "./DossierTimeMachine.jsx";
+import DossierFingerprintDesk from "./DossierFingerprintDesk.jsx";
 import"./reproductionDossier.css";
 
 const save=(name,text,type)=>{
@@ -9,7 +10,7 @@ const save=(name,text,type)=>{
  const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
  URL.revokeObjectURL(url);
 };
-export default function ReproductionDossier({trial,charter,proposal,bubbles=[],artifacts=[],byteChecks=[],reproductions=[],feedStatus}){
+export default function ReproductionDossier({trial,charter,proposal,bubbles=[],artifacts=[],byteChecks=[],reproductions=[],anchors=[],feedStatus}){
  const [generatedAt,setGeneratedAt]=useState(()=>new Date().toISOString());
  const [showJSON,setShowJSON]=useState(false),[message,setMessage]=useState("");
  const dossier=useMemo(()=>buildReproductionDossier({trial,charter,proposal,bubbles,artifacts,byteChecks,
@@ -71,6 +72,7 @@ export default function ReproductionDossier({trial,charter,proposal,bubbles=[],a
   </div>
   {message&&<p role="status" className="rd-status">{message}</p>}
   {showJSON&&<pre className="rd-code">{JSON.stringify(dossier,null,2)}</pre>}
+  <DossierFingerprintDesk dossier={dossier} anchors={anchors}/>
   <DossierTimeMachine dossier={dossier}/>
   <p className="rd-foot">No integrity seal, file contents, independently authenticated participants, complete history, science verdict or execution rights are supplied. <strong>Ledger Above Bruv.</strong></p>
  </section>;
